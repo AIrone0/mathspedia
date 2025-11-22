@@ -1,7 +1,8 @@
 Now for AI 
 transfer our current articles
 code ranking mechanism, AB testing, ways of adding custom math and other specificities from js
-setup github, changelog, and automatic nginx deployment to webserver 
+buy dns and vps and setup github actions for automatic nginx deployment to webserver 
+clean current slope code
 
 Myself
 add rules of organization like or theorem have history.. ludwig, and who is authorized to write

@@ -41,7 +41,28 @@ class MathspediaAuthorityHooks {
 	 */
 	public static function onPageSaveComplete($wikiPage, $user, $summary, $flags, $revisionRecord, $editResult) {
 		$rank = MathspediaAuthority::getUserRank($user);
-		$wikiPage->setProperty('mathspedia_author_rank', $rank);
+		$title = $wikiPage->getTitle();
+		
+		// Set page property via ParserOutput
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$parserOutput = $services->getParserOutputAccess()->getCachedParserOutput($title, $revisionRecord);
+		if ($parserOutput) {
+			$parserOutput->setPageProperty('mathspedia_author_rank', $rank);
+		}
+		
+		// Also store directly in page_props table
+		$dbw = wfGetDB(DB_PRIMARY);
+		$pageId = $title->getArticleID();
+		$dbw->replace(
+			'page_props',
+			[['pp_page', 'pp_propname']],
+			[
+				'pp_page' => $pageId,
+				'pp_propname' => 'mathspedia_author_rank',
+				'pp_value' => $rank
+			],
+			__METHOD__
+		);
 		
 		return true;
 	}
@@ -52,9 +73,17 @@ class MathspediaAuthorityHooks {
 	 */
 	public static function onBeforePageDisplay($out, $skin) {
 		$title = $out->getTitle();
-		$page = \MediaWiki\MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle($title);
+		if (!$title || !$title->exists()) {
+			return true;
+		}
 		
-		$authorRank = $page->getProperty('mathspedia_author_rank');
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$pageProps = $services->getPageProps();
+		
+		$props = $pageProps->getProperties($title, 'mathspedia_author_rank');
+		$pageId = $title->getArticleID();
+		$authorRank = $props[$pageId] ?? null;
+		
 		if ($authorRank) {
 			$rankDisplay = ucfirst(str_replace('_', ' ', $authorRank));
 			$out->addSubtitle("<span class='mathspedia-author-rank'>Author rank: $rankDisplay</span>");

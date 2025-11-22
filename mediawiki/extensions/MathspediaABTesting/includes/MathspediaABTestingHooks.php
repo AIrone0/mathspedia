@@ -11,11 +11,22 @@ class MathspediaABTestingHooks {
 	 */
 	public static function onPageSaveComplete($wikiPage, $user, $summary, $flags, $revisionRecord, $editResult) {
 		$title = $wikiPage->getTitle();
-		$currentAuthorRank = $wikiPage->getProperty('mathspedia_author_rank');
+		
+		// Get current author rank from page properties
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$pageProps = $services->getPageProps();
+		$props = $pageProps->getProperties($title, 'mathspedia_author_rank');
+		$pageId = $title->getArticleID();
+		$currentAuthorRank = $props[$pageId] ?? null;
+		
 		$userRank = MathspediaAuthority::getUserRank($user);
 		
-		// If same rank, create A/B test
-		if ($currentAuthorRank && $currentAuthorRank === $userRank && $user->getName() !== $wikiPage->getCreator()->getName()) {
+		// Get creator
+		$creator = $wikiPage->getCreator();
+		$creatorName = $creator ? $creator->getName() : null;
+		
+		// If same rank and different user, create A/B test
+		if ($currentAuthorRank && $currentAuthorRank === $userRank && $user->getName() !== $creatorName) {
 			$content = $revisionRecord->getContent('main');
 			$text = $content ? $content->getText() : '';
 			

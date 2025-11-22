@@ -1,4 +1,5 @@
 {
+	"manifest_version": 2,
 	"name": "MathspediaMath",
 	"version": "1.0.0",
 	"author": "Mathspedia Team",
@@ -10,7 +11,12 @@
 		"MediaWiki": ">= 1.41.0"
 	},
 	"AutoloadClasses": {
-		"MathspediaMathHooks": "includes/MathspediaMathHooks.php"
+		"MathspediaMathHooks": "includes/MathspediaMathHooks.php",
+		"SpecialReportSource": "includes/SpecialReportSource.php",
+		"MathspediaSourceReporting": "includes/MathspediaSourceReporting.php"
+	},
+	"SpecialPages": {
+		"ReportSource": "SpecialReportSource"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "MathspediaMathHooks::onParserFirstCallInit",

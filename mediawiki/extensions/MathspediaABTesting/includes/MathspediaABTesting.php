@@ -16,8 +16,16 @@ class MathspediaABTesting {
 		$dbr = wfGetDB(DB_REPLICA);
 		
 		// Get current author rank
-		$page = \MediaWiki\MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle(Title::newFromText($title));
-		$currentAuthorRank = $page->getProperty('mathspedia_author_rank');
+		$titleObj = Title::newFromText($title);
+		if (!$titleObj) {
+			return false;
+		}
+		
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$pageProps = $services->getPageProps();
+		$props = $pageProps->getProperties($titleObj, 'mathspedia_author_rank');
+		$pageId = $titleObj->getArticleID();
+		$currentAuthorRank = $props[$pageId] ?? null;
 		
 		$userRank = MathspediaAuthority::getUserRank($user);
 		

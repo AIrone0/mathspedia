@@ -36,10 +36,14 @@ class MathspediaAuthority {
 	 * Check if user can edit a page based on authority
 	 */
 	public static function canEdit(User $user, Title $title) {
-		$page = \MediaWiki\MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle($title);
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$pageProps = $services->getPageProps();
 		
 		// Get the author rank of the page
-		$authorRank = $page->getProperty('mathspedia_author_rank');
+		$props = $pageProps->getProperties($title, 'mathspedia_author_rank');
+		$pageId = $title->getArticleID();
+		$authorRank = $props[$pageId] ?? null;
+		
 		if (!$authorRank) {
 			// No author rank set, allow editing
 			return true;

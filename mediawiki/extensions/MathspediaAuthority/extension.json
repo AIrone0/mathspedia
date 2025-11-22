@@ -1,4 +1,5 @@
 {
+	"manifest_version": 2,
 	"name": "MathspediaAuthority",
 	"version": "1.0.0",
 	"author": "Mathspedia Team",

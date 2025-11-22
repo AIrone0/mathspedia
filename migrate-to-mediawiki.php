@@ -14,7 +14,23 @@
  * 3. Run: php migrate-to-mediawiki.php data-export.json
  */
 
-require_once __DIR__ . '/mediawiki/includes/WebStart.php';
+// Bootstrap MediaWiki for CLI
+$IP = __DIR__ . '/mediawiki';
+define('MEDIAWIKI', true);
+
+// Minimal server environment for CLI
+$_SERVER['SERVER_NAME'] = 'localhost';
+$_SERVER['REQUEST_URI'] = '/';
+$_SERVER['HTTP_HOST'] = 'localhost';
+$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+$_SERVER['REQUEST_METHOD'] = 'GET';
+$_SERVER['HTTP_USER_AGENT'] = 'Mathspedia Migration Script';
+
+// Include bootstrap helper functions first
+require_once "$IP/includes/BootstrapHelperFunctions.php";
+
+// Now Setup.php can use wfDetectInstallPath()
+require_once "$IP/includes/Setup.php";
 
 use MediaWiki\MediaWikiServices;
 
@@ -66,8 +82,9 @@ if (isset($data['users'])) {
         }
         
         // Set user properties (rank will be stored in user properties)
-        $user->setOption('mathspedia_rank', $userData['rank'] ?? 'math_enjoyer');
-        $user->saveSettings();
+        $userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
+        $userOptionsManager->setOption($user, 'mathspedia_rank', $userData['rank'] ?? 'math_enjoyer');
+        $userOptionsManager->saveOptions($user);
         
         echo "  Created/updated user: $username (rank: " . ($userData['rank'] ?? 'math_enjoyer') . ")\n";
     }
@@ -99,23 +116,55 @@ if (isset($data['articles'])) {
             $author = $userFactory->newFromName('Admin'); // Fallback to admin
         }
         
-        // Create/update page
+        // Create/update page using doUserEditContent (the proper way)
         $content = new WikitextContent($wikitext);
-        $updater = $page->newPageUpdater($author);
-        $updater->setContent('main', $content);
         
-        $comment = CommentStoreComment::newUnsavedComment(
-            "Migrated from localStorage-based system"
+        $status = $page->doUserEditContent(
+            $content,
+            $author,
+            "Migrated from localStorage-based system",
+            EDIT_NEW | EDIT_SUPPRESS_RC
         );
         
-        $updater->saveRevision($comment);
+        if (!$status->isOK()) {
+            echo "  Error: Failed to save '$title': " . $status->getWikiText() . "\n";
+            continue;
+        }
         
-        // Store metadata in page properties
+        // Verify page exists
+        if (!$page->exists()) {
+            echo "  Warning: Page '$title' was not created properly\n";
+        } else {
+            echo "  ✓ Migrated: $title (ID: " . $page->getId() . ")\n";
+        }
+        
+        // Store metadata in page properties using database directly
+        $dbw = wfGetDB(DB_PRIMARY);
+        $pageId = $titleObj->getArticleID();
+        
         if (isset($article['authorRank'])) {
-            $page->setProperty('mathspedia_author_rank', $article['authorRank']);
+            $dbw->replace(
+                'page_props',
+                [['pp_page', 'pp_propname']],
+                [
+                    'pp_page' => $pageId,
+                    'pp_propname' => 'mathspedia_author_rank',
+                    'pp_value' => (string)$article['authorRank']
+                ],
+                __METHOD__
+            );
         }
         if (isset($article['isTheorem']) && $article['isTheorem']) {
-            $page->setProperty('mathspedia_is_theorem', '1');
+            $dbw->replace(
+                'page_props',
+                [['pp_page', 'pp_propname']],
+                [
+                    'pp_page' => $pageId,
+                    'pp_propname' => 'mathspedia_is_theorem',
+                    'pp_value' => '1'
+                ],
+                __METHOD__
+            );
         }
         
         $count++;
