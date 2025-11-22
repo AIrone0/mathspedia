@@ -1,0 +1,33 @@
+{
+	"name": "MathspediaAuthority",
+	"version": "1.0.0",
+	"author": "Mathspedia Team",
+	"url": "https://github.com/mathspedia/mathspedia",
+	"description": "Authority-based editing system for Mathspedia",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.41.0"
+	},
+	"AutoloadClasses": {
+		"MathspediaAuthority": "includes/MathspediaAuthority.php",
+		"MathspediaAuthorityHooks": "includes/MathspediaAuthorityHooks.php"
+	},
+	"Hooks": {
+		"PageSaveComplete": "MathspediaAuthorityHooks::onPageSaveComplete",
+		"userCan": "MathspediaAuthorityHooks::onUserCan",
+		"BeforePageDisplay": "MathspediaAuthorityHooks::onBeforePageDisplay"
+	},
+	"config": {
+		"MathspediaAuthorityEnabled": {
+			"value": true,
+			"description": "Enable authority-based editing restrictions"
+		}
+	},
+	"MessagesDirs": {
+		"MathspediaAuthority": [
+			"i18n"
+		]
+	}
+}
+

@@ -1,0 +1,30 @@
+{
+	"name": "MathspediaABTesting",
+	"version": "1.0.0",
+	"author": "Mathspedia Team",
+	"url": "https://github.com/mathspedia/mathspedia",
+	"description": "A/B testing system for resolving same-rank editing conflicts",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.41.0"
+	},
+	"AutoloadClasses": {
+		"MathspediaABTesting": "includes/MathspediaABTesting.php",
+		"MathspediaABTestingHooks": "includes/MathspediaABTestingHooks.php",
+		"SpecialABTesting": "includes/SpecialABTesting.php"
+	},
+	"Hooks": {
+		"PageSaveComplete": "MathspediaABTestingHooks::onPageSaveComplete",
+		"BeforePageDisplay": "MathspediaABTestingHooks::onBeforePageDisplay"
+	},
+	"SpecialPages": {
+		"ABTesting": "SpecialABTesting"
+	},
+	"MessagesDirs": {
+		"MathspediaABTesting": [
+			"i18n"
+		]
+	}
+}
+

@@ -1,0 +1,26 @@
+Now for AI 
+transfer our current articles
+code ranking mechanism, AB testing, ways of adding custom math and other specificities from js
+setup github, changelog, and automatic nginx deployment to webserver 
+
+Myself
+add rules of organization like or theorem have history.. ludwig, and who is authorized to write
+have a US graphic company design and font
+add faq
+add stoch calc, jim ha, proofs and primes, math for ML, Parrot's theorem
+
+Later
+better algorithms for AB testing and rank of writers.
+add AI-assisted videos, images and animations.
+AI format references
+login and verification with email or name mathstodon for rank
+
+mathspedia aims to be a reference website like wikipedia for mathematics
+the issues with wikipedia is its a global and cannot be tailored to the specific needs of mathematics:
+1. circular explanation, no incitation to distill the knowledge
+2. math "qualified" people are often wrongly corrected for more nuanced answer (whatever that means)
+3. issue with copyright when uploading image.
+4. lack of intuitive videos and interactive animations.
+5. lack of updating references as math is an evolving fields.
+6. needs History (its motivation and the history of how it came be) like Parrot's theorem
+7. graph like visual? like augusti

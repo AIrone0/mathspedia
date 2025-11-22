@@ -1,0 +1,36 @@
+# MediaWiki
+mediawiki/LocalSettings.php
+mediawiki/images/
+mediawiki/cache/
+mediawiki/tmp/
+mediawiki/.htaccess
+
+# Database
+.mysql-data/
+.mysql.sock
+.mysql.pid
+.mysql-tmp/
+
+# PHP
+.php-server.pid
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*-backup.json
+data-export.json
+
+# MediaWiki downloads
+mediawiki-*.tar.gz
+

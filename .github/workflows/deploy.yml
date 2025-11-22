@@ -1,0 +1,46 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.7.0
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        
+    - name: Deploy to server
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd /var/www/mathspedia
+          git pull origin main
+          
+          # Update MediaWiki extensions
+          cd mediawiki/extensions
+          for ext in Mathspedia*; do
+            if [ -d "$ext" ]; then
+              echo "Updating extension: $ext"
+            fi
+          done
+          
+          # Run MediaWiki update script if needed
+          cd /var/www/mathspedia/mediawiki
+          php maintenance/update.php --quick
+          
+          # Clear cache
+          php maintenance/rebuildall.php
+          
+          # Restart services if needed
+          sudo systemctl reload nginx
+        EOF
+
