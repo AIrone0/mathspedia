@@ -32,7 +32,6 @@ Thumbs.db
 
 # Backup files
 *-backup.json
-data-export.json
 
 # MediaWiki downloads
 mediawiki-*.tar.gz
