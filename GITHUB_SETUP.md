@@ -72,7 +72,6 @@ git push -u origin main
 mathspedia/
 ├── .github/workflows/deploy.yml    # CI/CD
 ├── mediawiki/extensions/            # Custom extensions
-├── migrate-to-mediawiki.php        # Migration tool
 ├── setup-*.sh                      # Setup scripts
 ├── CHANGELOG.md                     # Version history
 ├── README.md                        # Main docs

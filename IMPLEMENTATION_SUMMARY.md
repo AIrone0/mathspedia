@@ -4,15 +4,7 @@ This document summarizes the implementation of the "Now for AI" tasks from todo.
 
 ## ✅ Completed Tasks
 
-### 1. Transfer Current Articles
-- **Migration Script**: `migrate-to-mediawiki.php`
-  - Converts localStorage articles to MediaWiki pages
-  - Preserves article structure (introduction, main content, history, etc.)
-  - Converts to MediaWiki wikitext format
-  - Handles users, A/B tests, and reported sources
-- **Migration Guide**: `MIGRATION_GUIDE.md` with step-by-step instructions
-
-### 2. Ranking Mechanism, A/B Testing, and Custom Math Features
+### 1. Ranking Mechanism, A/B Testing, and Custom Math Features
 
 #### Authority/Ranking System
 - **Extension**: `MathspediaAuthority`
@@ -49,11 +41,11 @@ This document summarizes the implementation of the "Now for AI" tasks from todo.
   - Location: `mediawiki/extensions/MathspediaMath/`
   - Features:
     - Custom parser tags:
-      - `[color:red]text[/color]`: Colored text
-      - `[size:large]text[/size]`: Sized text
-      - `[manim]code[/manim]`: Manim code blocks with copy button
-      - `[interactive]code[/interactive]`: Sandboxed JavaScript with MathAPI
-      - `[embed:url|width|height]`: External service embedding
+      - `<color value="red">text</color>`: Colored text
+      - `<size value="large">text</size>`: Sized text
+      - `<manim>code</manim>`: Manim code blocks with copy button
+      - `<interactive>code</interactive>`: Sandboxed JavaScript with MathAPI
+      - `<embed url="..." width="..." height="..."/>`: External service embedding
     - LaTeX support via MediaWiki Math extension
     - Interactive code execution in sandboxed iframes
   - Files:
@@ -98,14 +90,12 @@ mathspedia/
 │   │   ├── MathspediaABTesting/      # A/B testing
 │   │   └── MathspediaMath/           # Custom math features
 │   └── LocalSettings.php              # MediaWiki config
-├── migrate-to-mediawiki.php           # Migration script
 ├── setup-database.sql                 # Database schema
 ├── setup-extensions.sh                # Extension setup script
 ├── .github/workflows/deploy.yml       # CI/CD
 ├── nginx.conf.example                 # Nginx config
 ├── CHANGELOG.md                       # Changelog
 ├── README.md                          # Main documentation
-├── MIGRATION_GUIDE.md                 # Migration instructions
 └── IMPLEMENTATION_SUMMARY.md          # This file
 ```
 
@@ -116,12 +106,7 @@ mathspedia/
    ./setup-extensions.sh
    ```
 
-2. **Migrate Data** (if you have old data):
-   ```bash
-   php migrate-to-mediawiki.php data-export.json
-   ```
-
-3. **Push to GitHub**:
+2. **Push to GitHub**:
    ```bash
    git remote add origin <your-repo-url>
    git branch -M main

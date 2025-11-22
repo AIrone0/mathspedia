@@ -35,7 +35,7 @@ pkgs.mkShell
     
     # Check if MediaWiki is downloaded
     if [ ! -d "mediawiki" ]; then
-      echo "MediaWiki not found. Run: download-mediawiki.sh"
+      echo "MediaWiki not found. MediaWiki should already be installed in ./mediawiki"
     else
       echo "MediaWiki found in ./mediawiki"
       echo "To start PHP server: cd mediawiki && php -S localhost:8080"

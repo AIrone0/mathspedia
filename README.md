@@ -32,7 +32,7 @@ A Wikipedia clone for mathematics with advanced features for collaborative editi
 
 ### Enhanced Math Features
 - **LaTeX Support**: Full LaTeX rendering via Math extension
-- **Custom Formatting**: `[color:red]text[/color]` and `[size:large]text[/size]` tags
+- **Custom Formatting**: `<color value="red">text</color>` and `<size value="large">text</size>` tags
 - **Manim Code Blocks**: Display and copy Manim Python code for animations
 - **Interactive Code**: Sandboxed JavaScript code blocks with controlled MathAPI
 - **External Embeds**: Embed external services like Desmos, GeoGebra via iframes
@@ -57,12 +57,7 @@ A Wikipedia clone for mathematics with advanced features for collaborative editi
    ./setup-mediawiki.sh
    ```
 
-3. **Download MediaWiki:**
-   ```bash
-   ./download-mediawiki.sh
-   ```
-
-4. **Start PHP server:**
+3. **Start PHP server:**
    ```bash
    ./start-mediawiki.sh
    ```
@@ -84,27 +79,6 @@ A Wikipedia clone for mathematics with advanced features for collaborative editi
 7. **Enable extensions in LocalSettings.php:**
    The extensions are already configured in LocalSettings.php
 
-## Migration from Old System
-
-If you have data from the old localStorage-based system:
-
-1. Export data from browser console:
-   ```javascript
-   JSON.stringify({
-     articles: JSON.parse(localStorage.getItem('articles')),
-     users: JSON.parse(localStorage.getItem('users')),
-     abTests: JSON.parse(localStorage.getItem('abTests')),
-     reportedSources: JSON.parse(localStorage.getItem('reportedSources'))
-   })
-   ```
-
-2. Save to `data-export.json`
-
-3. Run migration:
-   ```bash
-   php migrate-to-mediawiki.php data-export.json
-   ```
-
 ## Development
 
 ### Extensions
@@ -123,7 +97,6 @@ mathspedia/
 │   │   ├── MathspediaABTesting/
 │   │   └── MathspediaMath/
 │   └── LocalSettings.php   # Configuration
-├── migrate-to-mediawiki.php # Migration script
 ├── setup-database.sql      # Database schema
 ├── nginx.conf.example      # Nginx configuration
 └── .github/workflows/      # CI/CD
@@ -172,11 +145,11 @@ The repository includes GitHub Actions workflow for automatic deployment to prod
 
 ### Special Tags
 
-- **Color**: `[color:red]text[/color]`
-- **Size**: `[size:large]text[/size]`
-- **Manim**: `[manim]code here[/manim]`
-- **Interactive**: `[interactive]JavaScript code[/interactive]`
-- **Embed**: `[embed:https://example.com|width|height]`
+- **Color**: `<color value="red">text</color>`
+- **Size**: `<size value="large">text</size>`
+- **Manim**: `<manim>code here</manim>`
+- **Interactive**: `<interactive>JavaScript code</interactive>`
+- **Embed**: `<embed url="https://example.com" width="800" height="600"/>`
 
 ### A/B Testing
 

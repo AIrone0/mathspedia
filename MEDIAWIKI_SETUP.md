@@ -23,12 +23,7 @@ This guide will help you set up MediaWiki locally using Nix.
    - Create the database (`wikidb`)
    - Create a database user (`wikiuser`)
 
-3. **Download MediaWiki:**
-   ```bash
-   ./download-mediawiki.sh
-   ```
-
-4. **Start the PHP development server:**
+3. **Start the PHP development server:**
    ```bash
    cd mediawiki
    php -S localhost:8080
@@ -76,7 +71,7 @@ php -S localhost:8081
 ## Next Steps
 
 After MediaWiki is installed:
-1. Export your current localStorage data from the old system
-2. Import articles into MediaWiki
-3. Configure extensions for custom features (A/B testing, authority system, etc.)
+1. Setup database tables for extensions: `mysql -u wikiuser -pwikipass wikidb < setup-database.sql`
+2. Start creating articles using MediaWiki's standard interface
+3. Custom features (A/B testing, authority system, etc.) are already configured
 
