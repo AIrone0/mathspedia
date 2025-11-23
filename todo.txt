@@ -1,27 +1,34 @@
 Now for AI 
-transfer our current articles
-code ranking mechanism, AB testing, ways of adding custom math and other specificities from js
-buy dns and vps and setup github actions for automatic nginx deployment to webserver 
-clean current slope code
+deploy with dns, vps and setup github actions 
+check if ranking mechanism, ab testing, ways of adding custom maths (image, latex, manim, animations, iframes ) work
+add theorems from
+stoch calc
+jim ha,
+proofs and 
+primes, 
+math for ML, 
+Parrot's theorem
+check how wikipedia and OS projects have rules of organization like or theorem have history.. ludwig, and who is authorized to write
+add AI-assisted videos, images and animations.
 
-Myself
-add rules of organization like or theorem have history.. ludwig, and who is authorized to write
+clean current slope code
 have a US graphic company design and font
 add faq
-add stoch calc, jim ha, proofs and primes, math for ML, Parrot's theorem
-
-Later
-better algorithms for AB testing and rank of writers.
-add AI-assisted videos, images and animations.
+setup more settings
+learn for better algorithms for AB testing and rank of writers.
 AI format references
-login and verification with email or name mathstodon for rank
+login and verification with email or name mathstodon for rank 
 
-mathspedia aims to be a reference website like wikipedia for mathematics
+
+
+
+Mathspedia aims to be a reference website like wikipedia for mathematics ('s theorems first)
 the issues with wikipedia is its a global and cannot be tailored to the specific needs of mathematics:
-1. circular explanation, no incitation to distill the knowledge
-2. math "qualified" people are often wrongly corrected for more nuanced answer (whatever that means)
-3. issue with copyright when uploading image.
-4. lack of intuitive videos and interactive animations.
-5. lack of updating references as math is an evolving fields.
-6. needs History (its motivation and the history of how it came be) like Parrot's theorem
-7. graph like visual? like augusti
+1. circular explanation, no incitation to distill the knowledge => clear explanations? learn and write how to edit
+2. math "qualified" people are often wrongly corrected for more nuanced answer (whatever that means) => rank based on math qualification and ab approv
+3. issue with copyright when uploading image. => AI for text to math image/videos/animations
+4. lack of intuitive videos and interactive animations. => AI make it simple to add them + embed great ressources.
+5. lack of updating references as math is an evolving fields. => AI manage ressources link and reporting one source as outdated/false include error messages on all articles
+6. needs History (its motivation and the history of how it came be) like Parrot's theorem => write in the how to edit file
+7. graph like visual? like augusti => for now do like obsidian map but wait to see if Augusti cooked.
+tree of prerequisites and history.

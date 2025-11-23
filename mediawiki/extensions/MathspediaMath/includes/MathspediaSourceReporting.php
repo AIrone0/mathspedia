@@ -28,12 +28,18 @@ class MathspediaSourceReporting {
 	 */
 	public static function getReportedSourcesForPage($title) {
 		// Extract references from page content
-		$page = \WikiPage::factory($title);
-		if (!$page->exists()) {
+		$services = \MediaWiki\MediaWikiServices::getInstance();
+		$page = $services->getWikiPageFactory()->newFromTitle($title);
+		if (!$page || !$page->exists()) {
 			return [];
 		}
 		
-		$content = $page->getContent();
+		$revisionRecord = $services->getRevisionStore()->getRevisionByTitle($title);
+		if (!$revisionRecord) {
+			return [];
+		}
+		
+		$content = $revisionRecord->getContent(\MediaWiki\Revision\SlotRecord::MAIN);
 		if (!$content) {
 			return [];
 		}
