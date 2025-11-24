@@ -1,0 +1,36 @@
+/* Vector-specific layout tweaks for dark dashboard theme */
+.vector-header-container,
+#mw-head,
+#mw-panel {
+    background-color: #101010;
+    border-bottom: 2px solid #ffb000;
+}
+
+#mw-panel {
+    border-right: 2px solid #3b3b3b;
+}
+
+#p-logo a {
+    background-color: #050505;
+}
+
+.vector-menu-portal .vector-menu-heading {
+    color: #ffdf80;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.vector-menu-portal .vector-menu-content-list li a {
+    color: #f4f4f4;
+}
+
+.vector-menu-portal .vector-menu-content-list li a:hover {
+    background-color: #ff7b00;
+    color: #000;
+}
+
+#p-personal li a,
+#p-personal li a:visited {
+    color: #ffdf80;
+}
+

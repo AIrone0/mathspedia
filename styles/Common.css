@@ -1,0 +1,633 @@
+/* Mathspedia dark dashboard theme - site-wide */
+html, body {
+    background-color: #050505 !important;
+    color: #f4f4f4 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace;
+}
+
+.mw-body,
+.mw-body-content {
+    background-color: #050505;
+    color: #f4f4f4;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 3rem;
+    border: 2px solid #3b3b3b;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.firstHeading {
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ffb000;
+    border-bottom: 3px solid #ffb000;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.2rem;
+}
+
+.mw-body-content h2,
+.mw-body-content h3,
+.mw-body-content h4 {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #ffdf80;
+    border-bottom: 2px solid #444;
+    padding: 0.3rem 0;
+    margin-top: 1.8rem;
+}
+
+a {
+    color: #ffb000;
+}
+
+a:visited {
+    color: #ff7b00;
+}
+
+a:hover,
+a:focus {
+    color: #ffffff;
+    background-color: #ff7b00;
+    text-decoration: none;
+}
+
+#toc {
+    background-color: #090909;
+    border: 2px solid #3b3b3b;
+    border-radius: 0;
+    padding: 0.8rem 1rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+}
+
+#toc .toctitle {
+    color: #ffb000;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid #3b3b3b;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+
+.infobox,
+.navbox,
+.mw-message-box,
+.mbox {
+    background-color: #090909 !important;
+    border: 2px solid #ffb000 !important;
+    color: #f4f4f4 !important;
+}
+
+table.wikitable {
+    background-color: #050505;
+    color: #f4f4f4;
+    border: 2px solid #3b3b3b;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+table.wikitable th,
+table.wikitable td {
+    border: 1px solid #3b3b3b;
+    padding: 0.3rem 0.6rem;
+}
+
+table.wikitable th {
+    background-color: #151515;
+    color: #ffdf80;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+table.wikitable tr:nth-child(even) {
+    background-color: #0b0b0b;
+}
+
+table.wikitable tr:hover {
+    background-color: #1a1a1a;
+}
+
+td.good,
+span.good {
+    color: #00ff7f;
+}
+
+td.bad,
+span.bad {
+    color: #ff4d4d;
+}
+
+pre,
+code,
+.mw-code {
+    background-color: #050505;
+    color: #e0e0e0;
+    border: 1px solid #3b3b3b;
+    padding: 0.5rem 0.7rem;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace;
+    font-size: 0.9rem;
+}
+
+blockquote {
+    border-left: 4px solid #ffb000;
+    background-color: #090909;
+    padding: 0.6rem 1rem;
+    margin-left: 0;
+    color: #f4f4f4;
+}
+
+.badge,
+.label {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+}
+
+.label-ok {
+    background-color: #006400;
+    color: #f4f4f4;
+}
+
+.label-warn {
+    background-color: #b8860b;
+    color: #f4f4f4;
+}
+
+.label-err {
+    background-color: #8b0000;
+    color: #f4f4f4;
+}
+
+/* ============================================
+   FORM ELEMENTS - Dark Terminal Style
+   ============================================ */
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="url"],
+textarea,
+select {
+    background-color: #050505 !important;
+    color: #f4f4f4 !important;
+    border: 2px solid #3b3b3b !important;
+    padding: 0.5rem 0.7rem;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace;
+    font-size: 0.9rem;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="url"]:focus,
+textarea:focus,
+select:focus {
+    outline: none !important;
+    border-color: #ffb000 !important;
+    box-shadow: 0 0 8px rgba(255, 176, 0, 0.3) !important;
+    background-color: #0a0a0a !important;
+}
+
+input[type="text"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+input[type="url"]:hover,
+textarea:hover,
+select:hover {
+    border-color: #555 !important;
+}
+
+label {
+    color: #ffdf80 !important;
+    font-weight: normal !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    font-size: 0.85rem !important;
+    display: block !important;
+    margin-bottom: 0.3rem !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+}
+
+/* Form layout improvements */
+form {
+    margin: 1.5rem 0;
+}
+
+form > div {
+    margin: 1rem 0;
+}
+
+/* ============================================
+   BUTTONS - Dark Terminal Style
+   ============================================ */
+
+button,
+input[type="submit"],
+input[type="button"],
+.oo-ui-buttonElement-button,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button {
+    background-color: #151515 !important;
+    color: #ffb000 !important;
+    border: 2px solid #ffb000 !important;
+    padding: 0.5rem 1.5rem;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+.oo-ui-buttonElement-button:hover,
+.oo-ui-buttonElement-framed.oo-ui-widget-enabled > .oo-ui-buttonElement-button:hover {
+    background-color: #ffb000 !important;
+    color: #000 !important;
+    box-shadow: 0 0 12px rgba(255, 176, 0, 0.5) !important;
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+    background-color: #ff7b00 !important;
+    border-color: #ff7b00 !important;
+}
+
+button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus {
+    outline: 2px solid #ffb000 !important;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   MERMAID GRAPH STYLING - Dark Terminal Theme
+   ============================================ */
+
+/* Mermaid container */
+#proof-graph {
+    margin: 2em 0;
+    padding: 1em;
+    background: #050505 !important;
+    border: 2px solid #3b3b3b !important;
+    border-radius: 0;
+    min-height: 200px;
+}
+
+#proof-graph .info {
+    padding: 0.5em;
+    background: #0a1a1a !important;
+    border-left: 3px solid #ffb000;
+    margin-bottom: 1em;
+    color: #f4f4f4 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace;
+    font-size: 0.9rem;
+}
+
+#proof-graph .error {
+    padding: 1em;
+    background: #1a0000 !important;
+    border: 2px solid #ff4d4d !important;
+    color: #ff4d4d !important;
+    border-radius: 0;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace;
+}
+
+#proof-graph .mermaid {
+    background: #050505 !important;
+    padding: 1em;
+    text-align: center;
+    overflow-x: auto;
+    border: 1px solid #3b3b3b !important;
+}
+
+/* Mermaid SVG styling - Dark Terminal Theme */
+#proof-graph .mermaid svg {
+    background-color: #050505 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+}
+
+/* Mermaid node styling - all graph types */
+#proof-graph .mermaid .node rect,
+#proof-graph .mermaid .node circle,
+#proof-graph .mermaid .node ellipse,
+#proof-graph .mermaid .node polygon,
+#proof-graph .mermaid .nodeLabel,
+#proof-graph .mermaid .node .label {
+    fill: #090909 !important;
+    stroke: #ffb000 !important;
+    stroke-width: 2px !important;
+    color: #f4f4f4 !important;
+}
+
+#proof-graph .mermaid .node .label,
+#proof-graph .mermaid .nodeLabel {
+    color: #f4f4f4 !important;
+    fill: #f4f4f4 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+    font-size: 14px !important;
+}
+
+/* Mermaid edge/arrow styling */
+#proof-graph .mermaid .edgePath .path,
+#proof-graph .mermaid .edgePath path {
+    stroke: #ffb000 !important;
+    stroke-width: 2px !important;
+    fill: none !important;
+}
+
+#proof-graph .mermaid .edgePath .arrowheadPath,
+#proof-graph .mermaid .arrowheadPath {
+    fill: #ffb000 !important;
+    stroke: #ffb000 !important;
+}
+
+#proof-graph .mermaid .edgeLabel,
+#proof-graph .mermaid .edgeLabel .label {
+    background-color: #050505 !important;
+    color: #ffdf80 !important;
+    fill: #ffdf80 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+}
+
+/* Mermaid cluster/group styling */
+#proof-graph .mermaid .cluster rect,
+#proof-graph .mermaid .cluster {
+    fill: #0a0a0a !important;
+    stroke: #3b3b3b !important;
+    stroke-width: 2px !important;
+}
+
+#proof-graph .mermaid .cluster .label,
+#proof-graph .mermaid .cluster-label {
+    color: #ffb000 !important;
+    fill: #ffb000 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+/* Mermaid flowchart specific */
+#proof-graph .mermaid .flowchart-link {
+    stroke: #ffb000 !important;
+    stroke-width: 2px !important;
+}
+
+#proof-graph .mermaid .flowchart-node {
+    fill: #090909 !important;
+    stroke: #ffb000 !important;
+}
+
+#proof-graph .mermaid .flowchart-label {
+    color: #f4f4f4 !important;
+    fill: #f4f4f4 !important;
+}
+
+/* Mermaid text elements - comprehensive override */
+#proof-graph .mermaid text,
+#proof-graph .mermaid svg text,
+#proof-graph .mermaid .label text {
+    fill: #f4f4f4 !important;
+    color: #f4f4f4 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+    font-size: 14px !important;
+}
+
+/* Mermaid title styling */
+#proof-graph .mermaid .titleText {
+    fill: #ffb000 !important;
+    color: #ffb000 !important;
+    font-family: "IBM Plex Mono", Menlo, Monaco, "DejaVu Sans Mono", monospace !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+/* Override any white backgrounds in Mermaid */
+#proof-graph .mermaid * {
+    background-color: transparent !important;
+}
+
+#proof-graph .mermaid svg * {
+    background-color: transparent !important;
+}
+
+/* Mermaid diagram background */
+#proof-graph .mermaid svg {
+    background: #050505 !important;
+}
+
+/* Autocomplete */
+.autocomplete {
+    position: absolute;
+    background: #0a0a0a !important;
+    border: 2px solid #ffb000 !important;
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 4px 12px rgba(255, 176, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    width: 400px;
+}
+
+.autocomplete li {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-bottom: 1px solid #3b3b3b;
+    color: #f4f4f4 !important;
+    background-color: #0a0a0a !important;
+}
+
+.autocomplete li:hover {
+    background: #ffb000 !important;
+    color: #000 !important;
+}
+
+.proof-deps-main-link {
+    background: #090909 !important;
+    border: 2px solid #ffb000 !important;
+    border-radius: 0;
+    padding: 1em;
+    margin: 1em 0;
+    text-align: center;
+}
+
+.proof-deps-main-link h3 {
+    margin-top: 0;
+    color: #ffb000;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.proof-deps-main-link a {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    background: #151515 !important;
+    color: #ffb000 !important;
+    text-decoration: none;
+    border: 2px solid #ffb000 !important;
+    border-radius: 0;
+    margin-top: 0.5em;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.proof-deps-main-link a:hover {
+    background: #ffb000 !important;
+    color: #000 !important;
+}
+
+/* ============================================
+   SEARCH BOXES
+   ============================================ */
+
+#searchInput,
+#searchInput input {
+    background-color: #050505 !important;
+    color: #f4f4f4 !important;
+    border: 2px solid #3b3b3b !important;
+}
+
+#searchInput:focus,
+#searchInput input:focus {
+    border-color: #ffb000 !important;
+    box-shadow: 0 0 8px rgba(255, 176, 0, 0.3) !important;
+}
+
+/* ============================================
+   SPECIAL PAGES
+   ============================================ */
+
+.mw-special-PagesList,
+.mw-special-AllPages,
+.mw-special-RecentChanges {
+    background-color: #050505 !important;
+}
+
+.mw-special-PagesList table,
+.mw-special-AllPages table,
+.mw-special-RecentChanges table {
+    background-color: #050505 !important;
+    border: 2px solid #3b3b3b !important;
+}
+
+/* ============================================
+   OOUI ELEMENTS (MediaWiki UI Framework)
+   ============================================ */
+
+.oo-ui-widget {
+    color: #f4f4f4 !important;
+}
+
+.oo-ui-inputWidget-input {
+    background-color: #050505 !important;
+    color: #f4f4f4 !important;
+    border: 2px solid #3b3b3b !important;
+}
+
+.oo-ui-inputWidget-input:focus {
+    border-color: #ffb000 !important;
+    box-shadow: 0 0 8px rgba(255, 176, 0, 0.3) !important;
+}
+
+.oo-ui-dropdownWidget-handle {
+    background-color: #151515 !important;
+    border: 2px solid #3b3b3b !important;
+    color: #f4f4f4 !important;
+}
+
+.oo-ui-dropdownWidget-handle:hover {
+    border-color: #ffb000 !important;
+}
+
+.oo-ui-menuSelectWidget {
+    background-color: #0a0a0a !important;
+    border: 2px solid #ffb000 !important;
+}
+
+.oo-ui-optionWidget-highlighted {
+    background-color: #ffb000 !important;
+    color: #000 !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+#footer {
+    background-color: #050505 !important;
+    border-top: 2px solid #3b3b3b !important;
+    color: #888 !important;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+#footer a {
+    color: #888 !important;
+}
+
+#footer a:hover {
+    color: #ffb000 !important;
+}
+
+/* ============================================
+   MISC ELEMENTS
+   ============================================ */
+
+.mw-editsection {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.mw-editsection a {
+    color: #888;
+}
+
+.mw-editsection a:hover {
+    color: #ffb000;
+}
+
+.mw-parser-output {
+    color: #f4f4f4 !important;
+    background-color: transparent !important;
+}
+
+/* Fix any white backgrounds that might show through */
+.mw-body,
+.mw-content-container,
+.mw-page-container {
+    background-color: #050505 !important;
+}
+
+/* Ensure all text is visible */
+p, li, span, div {
+    color: #f4f4f4 !important;
+}
+
+/* Fix warning boxes */
+.mw-message-box,
+.mw-message-box-warning {
+    background-color: #1a1a00 !important;
+    border: 2px solid #ffb000 !important;
+    color: #ffdf80 !important;
+}
+
+/* Fix paragraph text color */
+.mw-body-content p {
+    color: #f4f4f4 !important;
+}
+
