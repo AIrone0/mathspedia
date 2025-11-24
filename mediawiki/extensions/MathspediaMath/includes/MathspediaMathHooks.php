@@ -183,6 +183,19 @@ HTML;
 	}
 	
 	/**
+	 * Hook: EditFormPreloadText
+	 * Preload template for new articles
+	 */
+	public static function onEditFormPreloadText(&$text, $title) {
+		// Only for main namespace and new pages
+		if ($title->getNamespace() === NS_MAIN && !$title->exists()) {
+			require_once __DIR__ . '/MathspediaArticleTemplate.php';
+			$text = MathspediaArticleTemplate::getTemplate($title);
+		}
+		return true;
+	}
+	
+	/**
 	 * Hook: BeforePageDisplay
 	 * Add resources and show source alerts
 	 */

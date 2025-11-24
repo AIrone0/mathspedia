@@ -13,14 +13,16 @@
 	"AutoloadClasses": {
 		"MathspediaMathHooks": "includes/MathspediaMathHooks.php",
 		"SpecialReportSource": "includes/SpecialReportSource.php",
-		"MathspediaSourceReporting": "includes/MathspediaSourceReporting.php"
+		"MathspediaSourceReporting": "includes/MathspediaSourceReporting.php",
+		"MathspediaArticleTemplate": "includes/MathspediaArticleTemplate.php"
 	},
 	"SpecialPages": {
 		"ReportSource": "SpecialReportSource"
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "MathspediaMathHooks::onParserFirstCallInit",
-		"BeforePageDisplay": "MathspediaMathHooks::onBeforePageDisplay"
+		"BeforePageDisplay": "MathspediaMathHooks::onBeforePageDisplay",
+		"EditFormPreloadText": "MathspediaMathHooks::onEditFormPreloadText"
 	},
 	"ResourceModules": {
 		"ext.mathspediaMath": {
