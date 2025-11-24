@@ -24,6 +24,8 @@
 	},
 	"ResourceModules": {
 		"ext.mathspediaMath": {
+			"localBasePath": "",
+			"remoteExtPath": "MathspediaMath",
 			"scripts": ["js/mathspedia-math.js"],
 			"styles": ["css/mathspedia-math.css"]
 		}

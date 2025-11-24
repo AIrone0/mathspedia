@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": ["Mathspedia Team"]
+	},
+	"proofdependencies": "Proof Dependencies",
+	"mathspedia-proofdeps-proof-name": "Proof Name",
+	"mathspedia-proofdeps-max-depth": "Maximum Depth (0 = unlimited)",
+	"mathspedia-proofdeps-max-depth-help": "Set to 0 for unlimited depth, or specify a number to limit recursion",
+	"mathspedia-proofdeps-submit": "Visualize Dependencies"
+}
+

@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2,
+	"name": "MathspediaProofDependencies",
+	"version": "1.0.0",
+	"author": "Mathspedia Team",
+	"url": "https://github.com/mathspedia/mathspedia",
+	"description": "Proof dependency visualizer for Mathspedia",
+	"license-name": "GPL-2.0-or-later",
+	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.41.0"
+	},
+	"AutoloadClasses": {
+		"MathspediaProofDependencies": "includes/MathspediaProofDependencies.php",
+		"SpecialProofDependencies": "includes/SpecialProofDependencies.php",
+		"MathspediaProofDependenciesHooks": "includes/MathspediaProofDependenciesHooks.php"
+	},
+	"Hooks": {
+		"BeforePageDisplay": "MathspediaProofDependenciesHooks::onBeforePageDisplay"
+	},
+	"SpecialPages": {
+		"ProofDependencies": "SpecialProofDependencies"
+	},
+	"ResourceModules": {
+		"ext.mathspediaProofDependencies": {
+			"localBasePath": "",
+			"remoteExtPath": "MathspediaProofDependencies",
+			"scripts": [
+				"js/proof-dependencies.js"
+			],
+			"styles": [
+				"css/proof-dependencies.css"
+			],
+			"dependencies": []
+		}
+	},
+	"MessagesDirs": {
+		"MathspediaProofDependencies": [
+			"i18n"
+		]
+	}
+}
+

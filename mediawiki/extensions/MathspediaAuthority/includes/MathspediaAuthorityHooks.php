@@ -21,12 +21,13 @@ class MathspediaAuthorityHooks {
 			return true;
 		}
 		
-		// Allow sysops to edit anything
-		if ($user->isAllowed('edit')) {
+		// If user doesn't have basic edit permission, don't interfere
+		// (MediaWiki will handle that restriction)
+		if (!$user->isAllowed('edit')) {
 			return true;
 		}
 		
-		// Check authority
+		// Check authority - this adds additional restrictions based on rank
 		if (!MathspediaAuthority::canEdit($user, $title)) {
 			$result = false;
 			return false;
