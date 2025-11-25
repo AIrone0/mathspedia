@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         theme: {
@@ -23,7 +23,7 @@
             },
             fontFamily: {
               mono: ['"JetBrains Mono"', 'monospace'],
-              retro: ['"VT323"', 'monospace'],
+              retro: ['"Gorton"', '"VT323"', '"JetBrains Mono"', 'monospace'],
             },
             spacing: {
               '128': '32rem',
@@ -33,6 +33,16 @@
       }
     </script>
     <style>
+      /* Gorton Digital - Industrial engraved typeface from github.com/drdnar/GortonDigital */
+      @font-face {
+        font-family: 'Gorton';
+        src: url('/fonts/GortonDigital-Regular.woff2') format('woff2'),
+             url('/fonts/GortonDigital-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      
       body {
         background-color: #050505;
         color: #00ff41;
@@ -54,6 +64,7 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #005500;
       }
+      /* CRT scanline effect - commented out for cleaner text
       .crt::before {
         content: " ";
         display: block;
@@ -67,6 +78,7 @@
         background-size: 100% 2px, 3px 100%;
         pointer-events: none;
       }
+      */
     </style>
   <script type="importmap">
 {
