@@ -1,0 +1,5 @@
+{
+  "name": "OmniMath Terminal",
+  "description": "A retro-futuristic, dashboard-style explorer for mathematical theorems, proofs, and their historical dependencies.",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,89 @@
+{
+  "id": "riemann-hypothesis",
+  "name": "Riemann Hypothesis",
+  "year": 1859,
+  "introduction": "The Riemann Hypothesis is one of the most important unsolved problems in mathematics. It conjectures that all non-trivial zeros of the Riemann zeta function ζ(s) have real part equal to 1/2. In other words, if ζ(s) = 0 and s is not a negative even integer, then s = 1/2 + it for some real number t. This hypothesis has profound implications for the distribution of prime numbers.",
+  "history": "Bernhard Riemann proposed this hypothesis in his 1859 paper 'On the Number of Primes Less Than a Given Magnitude.' The conjecture emerged from his study of the zeta function's connection to prime number distribution. Despite over 160 years of effort by the world's best mathematicians, it remains unproven. It is one of the seven Millennium Prize Problems, with a $1 million prize for its solution. Computational verification has confirmed billions of zeros lie on the critical line, but a proof remains elusive.",
+  "dependencies": [
+    {
+      "id": "complex-analysis",
+      "name": "Complex Analysis",
+      "year": 1814,
+      "parentIds": []
+    },
+    {
+      "id": "analytic-continuation",
+      "name": "Analytic Continuation",
+      "year": 1851,
+      "parentIds": ["complex-analysis"]
+    },
+    {
+      "id": "prime-number-theorem",
+      "name": "Prime Number Theorem",
+      "year": 1896,
+      "parentIds": []
+    },
+    {
+      "id": "riemann-zeta",
+      "name": "Riemann Zeta Function",
+      "year": 1859,
+      "parentIds": ["analytic-continuation", "prime-number-theorem"]
+    },
+    {
+      "id": "riemann-hypothesis",
+      "name": "Riemann Hypothesis",
+      "year": 1859,
+      "parentIds": ["riemann-zeta"]
+    }
+  ],
+  "proofs": [
+    {
+      "title": "Statement of the Hypothesis (UNPROVEN)",
+      "steps": [
+        {
+          "text": "The Riemann zeta function is defined for Re(s) > 1 as:",
+          "latex": "\\zeta(s) = \\sum_{n=1}^{\\infty} \\frac{1}{n^s} = \\prod_{p \\text{ prime}} \\frac{1}{1 - p^{-s}}"
+        },
+        {
+          "text": "It can be analytically continued to all complex numbers except s = 1.",
+          "latex": "\\zeta(s) = 2^s \\pi^{s-1} \\sin\\left(\\frac{\\pi s}{2}\\right) \\Gamma(1-s) \\zeta(1-s)"
+        },
+        {
+          "text": "The 'trivial zeros' occur at negative even integers:",
+          "latex": "\\zeta(-2n) = 0 \\text{ for } n = 1, 2, 3, \\ldots"
+        },
+        {
+          "text": "The Riemann Hypothesis states that all 'non-trivial zeros' satisfy:",
+          "latex": "\\zeta(s) = 0 \\implies \\text{Re}(s) = \\frac{1}{2}"
+        },
+        {
+          "text": "Equivalently, all non-trivial zeros lie on the 'critical line':",
+          "latex": "s = \\frac{1}{2} + it, \\quad t \\in \\mathbb{R}"
+        }
+      ]
+    }
+  ],
+  "implications": [
+    "Precise error bounds for the Prime Number Theorem",
+    "Distribution of gaps between consecutive primes",
+    "Cryptographic security assumptions",
+    "Random matrix theory connections",
+    "Quantum chaos and physics applications"
+  ],
+  "requisites": [
+    "Complex analysis and analytic functions",
+    "Prime numbers and their distribution",
+    "Infinite series and products",
+    "Analytic continuation"
+  ],
+  "references": [
+    "Riemann, B., 'Über die Anzahl der Primzahlen unter einer gegebenen Grösse', 1859",
+    "Edwards, H.M., 'Riemann's Zeta Function'",
+    "Conrey, J.B., 'The Riemann Hypothesis', Notices of the AMS, 2003"
+  ],
+  "externalLinks": [
+    { "title": "Wikipedia: Riemann hypothesis", "url": "https://en.wikipedia.org/wiki/Riemann_hypothesis" },
+    { "title": "Clay Mathematics Institute", "url": "https://www.claymath.org/millennium-problems/riemann-hypothesis" }
+  ]
+}
+

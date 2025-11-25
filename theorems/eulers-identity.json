@@ -1,0 +1,87 @@
+{
+  "id": "eulers-identity",
+  "name": "Euler's Identity",
+  "year": 1748,
+  "introduction": "Euler's identity is the equality e^(iπ) + 1 = 0, which connects five fundamental mathematical constants: e (Euler's number), i (imaginary unit), π (pi), 1 (multiplicative identity), and 0 (additive identity). It is a special case of Euler's formula e^(ix) = cos(x) + i·sin(x) when x = π. Often called 'the most beautiful equation in mathematics,' it elegantly unifies algebra, geometry, and analysis.",
+  "history": "Leonhard Euler (1707-1783) published this result in his 'Introductio in analysin infinitorum' in 1748. The identity emerges from his work on complex exponentials and their relationship to trigonometric functions. Euler's profound insight connected seemingly unrelated areas of mathematics and laid groundwork for complex analysis. The formula's beauty lies in its simplicity despite encoding deep mathematical truths about periodicity, growth, and rotation.",
+  "dependencies": [
+    {
+      "id": "complex-numbers",
+      "name": "Complex Numbers",
+      "year": 1545,
+      "parentIds": []
+    },
+    {
+      "id": "taylor-series",
+      "name": "Taylor Series",
+      "year": 1715,
+      "parentIds": []
+    },
+    {
+      "id": "eulers-formula",
+      "name": "Euler's Formula",
+      "year": 1748,
+      "parentIds": ["complex-numbers", "taylor-series"]
+    },
+    {
+      "id": "eulers-identity",
+      "name": "Euler's Identity",
+      "year": 1748,
+      "parentIds": ["eulers-formula"]
+    }
+  ],
+  "proofs": [
+    {
+      "title": "Proof via Taylor Series",
+      "steps": [
+        {
+          "text": "Start with the Taylor series expansions for e^x, sin(x), and cos(x):",
+          "latex": "e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!} = 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\cdots"
+        },
+        {
+          "text": "Substitute x = iθ into the exponential series:",
+          "latex": "e^{i\\theta} = 1 + i\\theta + \\frac{(i\\theta)^2}{2!} + \\frac{(i\\theta)^3}{3!} + \\frac{(i\\theta)^4}{4!} + \\cdots"
+        },
+        {
+          "text": "Using i² = -1, i³ = -i, i⁴ = 1, etc., separate real and imaginary parts:",
+          "latex": "e^{i\\theta} = \\left(1 - \\frac{\\theta^2}{2!} + \\frac{\\theta^4}{4!} - \\cdots\\right) + i\\left(\\theta - \\frac{\\theta^3}{3!} + \\frac{\\theta^5}{5!} - \\cdots\\right)"
+        },
+        {
+          "text": "Recognize the Taylor series for cosine and sine:",
+          "latex": "e^{i\\theta} = \\cos\\theta + i\\sin\\theta"
+        },
+        {
+          "text": "Set θ = π, noting that cos(π) = -1 and sin(π) = 0:",
+          "latex": "e^{i\\pi} = \\cos\\pi + i\\sin\\pi = -1 + 0i = -1"
+        },
+        {
+          "text": "Therefore:",
+          "latex": "e^{i\\pi} + 1 = 0"
+        }
+      ]
+    }
+  ],
+  "implications": [
+    "Foundation of complex analysis",
+    "Signal processing and Fourier transforms",
+    "Quantum mechanics wave functions",
+    "AC circuit analysis",
+    "Rotation representations in 2D"
+  ],
+  "requisites": [
+    "Complex numbers and the imaginary unit i",
+    "Exponential function properties",
+    "Taylor/Maclaurin series",
+    "Trigonometric functions"
+  ],
+  "references": [
+    "Euler, L., 'Introductio in analysin infinitorum', 1748",
+    "Nahin, P.J., 'Dr. Euler's Fabulous Formula'",
+    "Stillwell, J., 'Mathematics and Its History'"
+  ],
+  "externalLinks": [
+    { "title": "Wikipedia: Euler's identity", "url": "https://en.wikipedia.org/wiki/Euler%27s_identity" },
+    { "title": "3Blue1Brown: e^(iπ) explanation", "url": "https://www.youtube.com/watch?v=mvmuCPvRoWQ" }
+  ]
+}
+

@@ -1,0 +1,110 @@
+{
+  "id": "fundamental-theorem-calculus",
+  "name": "Fundamental Theorem of Calculus",
+  "year": 1668,
+  "introduction": "The Fundamental Theorem of Calculus establishes the relationship between differentiation and integration, the two main operations in calculus. It consists of two parts: the first states that integration and differentiation are inverse operations, while the second provides a method for evaluating definite integrals. This theorem bridges the gap between the instantaneous (derivatives) and the cumulative (integrals).",
+  "history": "While Newton and Leibniz independently developed calculus in the late 17th century, the theorem's roots trace to earlier work by James Gregory (1668) and Isaac Barrow (1670). Newton's approach used 'fluxions' while Leibniz developed the notation we use today. The rigorous formulation came later through Cauchy, Riemann, and Lebesgue in the 19th century. This theorem is considered one of the most important discoveries in mathematics.",
+  "dependencies": [
+    {
+      "id": "limits",
+      "name": "Theory of Limits",
+      "year": 1821,
+      "parentIds": []
+    },
+    {
+      "id": "continuity",
+      "name": "Continuous Functions",
+      "year": 1817,
+      "parentIds": ["limits"]
+    },
+    {
+      "id": "derivatives",
+      "name": "Derivatives",
+      "year": 1665,
+      "parentIds": ["limits"]
+    },
+    {
+      "id": "riemann-integral",
+      "name": "Riemann Integration",
+      "year": 1854,
+      "parentIds": ["limits", "continuity"]
+    },
+    {
+      "id": "fundamental-theorem-calculus",
+      "name": "Fundamental Theorem of Calculus",
+      "year": 1668,
+      "parentIds": ["derivatives", "riemann-integral", "continuity"]
+    }
+  ],
+  "proofs": [
+    {
+      "title": "First Fundamental Theorem",
+      "steps": [
+        {
+          "text": "Let f be continuous on [a, b]. Define the accumulation function:",
+          "latex": "F(x) = \\int_a^x f(t)\\, dt"
+        },
+        {
+          "text": "We want to show F'(x) = f(x). Consider the difference quotient:",
+          "latex": "\\frac{F(x+h) - F(x)}{h} = \\frac{1}{h}\\int_x^{x+h} f(t)\\, dt"
+        },
+        {
+          "text": "By the Mean Value Theorem for integrals, there exists c ∈ [x, x+h] such that:",
+          "latex": "\\frac{1}{h}\\int_x^{x+h} f(t)\\, dt = f(c)"
+        },
+        {
+          "text": "As h → 0, c → x, and by continuity of f:",
+          "latex": "F'(x) = \\lim_{h \\to 0} f(c) = f(x)"
+        }
+      ]
+    },
+    {
+      "title": "Second Fundamental Theorem",
+      "steps": [
+        {
+          "text": "Let f be continuous on [a, b] and F be any antiderivative of f (so F' = f).",
+          "latex": "\\frac{d}{dx}F(x) = f(x)"
+        },
+        {
+          "text": "Define G(x) = ∫ₐˣ f(t) dt. By the First FTC, G'(x) = f(x).",
+          "latex": "G'(x) = f(x) = F'(x)"
+        },
+        {
+          "text": "Since F and G have the same derivative, they differ by a constant:",
+          "latex": "G(x) = F(x) + C"
+        },
+        {
+          "text": "Evaluating at x = a: G(a) = 0, so C = -F(a).",
+          "latex": "G(x) = F(x) - F(a)"
+        },
+        {
+          "text": "Therefore, evaluating at x = b:",
+          "latex": "\\int_a^b f(x)\\, dx = F(b) - F(a)"
+        }
+      ]
+    }
+  ],
+  "implications": [
+    "Computation of areas under curves",
+    "Physics: work, displacement, and energy calculations",
+    "Probability theory and expected values",
+    "Differential equations solutions",
+    "Economic models involving accumulation"
+  ],
+  "requisites": [
+    "Limits and continuity",
+    "Definition of the derivative",
+    "Riemann sums and definite integrals",
+    "Antiderivatives"
+  ],
+  "references": [
+    "Newton, I., 'Method of Fluxions', 1671",
+    "Leibniz, G.W., 'Nova Methodus', 1684",
+    "Spivak, M., 'Calculus', 4th Edition"
+  ],
+  "externalLinks": [
+    { "title": "Wikipedia: Fundamental theorem of calculus", "url": "https://en.wikipedia.org/wiki/Fundamental_theorem_of_calculus" },
+    { "title": "Khan Academy: FTC", "url": "https://www.khanacademy.org/math/ap-calculus-ab/ab-integration-new/ab-6-4/v/fundamental-theorem-of-calculus" }
+  ]
+}
+

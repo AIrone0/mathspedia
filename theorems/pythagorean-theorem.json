@@ -1,0 +1,104 @@
+{
+  "id": "pythagorean-theorem",
+  "name": "Pythagorean Theorem",
+  "year": -500,
+  "introduction": "The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) equals the sum of the squares of the lengths of the other two sides. This fundamental relation in Euclidean geometry is expressed as a² + b² = c², where c represents the hypotenuse and a, b represent the other two sides.",
+  "history": "Although the theorem bears Pythagoras's name (c. 570–495 BCE), evidence suggests that the Babylonians knew this relationship over a thousand years earlier. The theorem appears on a Babylonian tablet (Plimpton 322) dating to approximately 1800 BCE. Pythagoras, or members of his school, are credited with providing the first known proof. The theorem has been proven in hundreds of different ways throughout history, with Euclid's proof in Elements (c. 300 BCE) being one of the most famous.",
+  "dependencies": [
+    {
+      "id": "euclidean-geometry",
+      "name": "Euclidean Geometry Axioms",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "similar-triangles",
+      "name": "Similar Triangles",
+      "year": -600,
+      "parentIds": ["euclidean-geometry"]
+    },
+    {
+      "id": "area-squares",
+      "name": "Area of Squares",
+      "year": -2000,
+      "parentIds": []
+    },
+    {
+      "id": "pythagorean-theorem",
+      "name": "Pythagorean Theorem",
+      "year": -500,
+      "parentIds": ["similar-triangles", "area-squares"]
+    }
+  ],
+  "proofs": [
+    {
+      "title": "Proof by Similar Triangles",
+      "steps": [
+        {
+          "text": "Consider a right triangle with legs a and b, and hypotenuse c. Drop an altitude h from the right angle to the hypotenuse, dividing it into segments p and q.",
+          "latex": "c = p + q"
+        },
+        {
+          "text": "The altitude creates two smaller triangles, each similar to the original triangle and to each other.",
+          "latex": "\\triangle ABC \\sim \\triangle ACD \\sim \\triangle CBD"
+        },
+        {
+          "text": "From the similarity of triangles, we get the proportions:",
+          "latex": "\\frac{a}{c} = \\frac{p}{a} \\implies a^2 = pc"
+        },
+        {
+          "text": "Similarly for the other leg:",
+          "latex": "\\frac{b}{c} = \\frac{q}{b} \\implies b^2 = qc"
+        },
+        {
+          "text": "Adding these equations and using p + q = c:",
+          "latex": "a^2 + b^2 = pc + qc = c(p + q) = c^2"
+        }
+      ]
+    },
+    {
+      "title": "Proof by Rearrangement",
+      "steps": [
+        {
+          "text": "Construct a square with side length (a + b). Place four copies of the right triangle inside.",
+          "latex": "(a + b)^2 = a^2 + 2ab + b^2"
+        },
+        {
+          "text": "The four triangles form a tilted square in the center with side length c.",
+          "latex": "\\text{Area of inner square} = c^2"
+        },
+        {
+          "text": "The total area equals the large square's area:",
+          "latex": "(a + b)^2 = 4 \\cdot \\frac{1}{2}ab + c^2"
+        },
+        {
+          "text": "Expanding and simplifying:",
+          "latex": "a^2 + 2ab + b^2 = 2ab + c^2 \\implies a^2 + b^2 = c^2"
+        }
+      ]
+    }
+  ],
+  "implications": [
+    "Distance formula in Cartesian coordinates",
+    "Trigonometric identities (sin²θ + cos²θ = 1)",
+    "Complex number magnitude",
+    "Euclidean distance in n-dimensional space",
+    "Law of Cosines generalization"
+  ],
+  "requisites": [
+    "Right angles and perpendicularity",
+    "Area computation",
+    "Algebraic manipulation",
+    "Similar triangles"
+  ],
+  "references": [
+    "Euclid, 'Elements', Book I, Proposition 47",
+    "Heath, T.L., 'The Thirteen Books of Euclid's Elements'",
+    "Maor, E., 'The Pythagorean Theorem: A 4,000-Year History'"
+  ],
+  "externalLinks": [
+    { "title": "Wikipedia: Pythagorean theorem", "url": "https://en.wikipedia.org/wiki/Pythagorean_theorem" },
+    { "title": "Cut-the-Knot: 122 Proofs", "url": "https://www.cut-the-knot.org/pythagoras/" }
+  ]
+}
+
