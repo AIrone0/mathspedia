@@ -6,3 +6,4 @@ add tabs to top bar
 add helix shortcuts to naviguate website.
 add main page showing ultimate
 improve styling.
+rewirte d3.js using webgpu for faster.

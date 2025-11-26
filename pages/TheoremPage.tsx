@@ -3,7 +3,8 @@ import { TheoremData } from '../types';
 import DependencyGraph from '../components/DependencyGraph';
 import LatexRenderer from '../components/LatexRenderer';
 import FormattedText from '../components/FormattedText';
-import { ChevronRight, ExternalLink, Hash, BookOpen, Clock, Activity } from 'lucide-react';
+import PrimeFactorizationViz from '../components/PrimeFactorizationViz';
+import { ChevronRight, ExternalLink, Hash, BookOpen, Clock, Activity, Sparkles } from 'lucide-react';
 
 interface TheoremPageProps {
   data: TheoremData;
@@ -34,24 +35,33 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       </div>
 
       {/* Intro Box */}
-      <div className="col-span-12 border border-term-dim p-4 bg-black relative">
+      <div className="col-span-12 md:col-span-8 border border-term-dim p-4 bg-black relative">
         <SectionHeader title="INTRODUCTION" icon={<Hash size={14}/>} />
         <FormattedText text={data.introduction} className="text-justify" />
       </div>
 
-       {/* Requisites Side Panel md:col-span-8
+       {/* Interactive Visualization or Requisites Side Panel */}
        <div className="col-span-12 md:col-span-4 border border-term-dim p-4 bg-black flex flex-col">
-         <SectionHeader title="REQUISITES / CONTEXT" icon={<Activity size={14}/>} />
-         <ul className="space-y-1 text-sm font-mono flex-grow overflow-y-auto">
-           {data.requisites.map((req, idx) => (
-             <li key={idx} className="flex items-center group cursor-pointer hover:bg-term-dim/30 p-1"
-                 onClick={() => onNavigate(req)}>
-               <ChevronRight size={12} className="text-term-dim group-hover:text-term-fg mr-2" />
-               <span className="text-term-accent group-hover:text-term-fg">{req}</span>
-             </li>
-           ))}
-         </ul>
-      </div>*/}
+         {data.id === 'fundamental-theorem-arithmetic' ? (
+           <>
+             <SectionHeader title="INTERACTIVE DEMO" icon={<Sparkles size={14}/>} />
+             <PrimeFactorizationViz />
+           </>
+         ) : (
+           <>
+             <SectionHeader title="REQUISITES / CONTEXT" icon={<Activity size={14}/>} />
+             <ul className="space-y-1 text-sm font-mono flex-grow overflow-y-auto">
+               {data.requisites.map((req, idx) => (
+                 <li key={idx} className="flex items-center group cursor-pointer hover:bg-term-dim/30 p-1"
+                     onClick={() => onNavigate(req)}>
+                   <ChevronRight size={12} className="text-term-dim group-hover:text-term-fg mr-2" />
+                   <span className="text-term-accent group-hover:text-term-fg">{req}</span>
+                 </li>
+               ))}
+             </ul>
+           </>
+         )}
+       </div>
 
       {/* Timeline Graph */}
       <div className="col-span-12 border border-term-dim p-0 bg-black">
