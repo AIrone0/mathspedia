@@ -1,0 +1,82 @@
+{
+  "id": "fundamental-theorem-arithmetic",
+  "name": "Fundamental Theorem of Arithmetic",
+  "domain": "Number_Theory",
+  "year": 1798,
+  "introduction": "Let $\\mathbb{N} = \\{0, 1, 2, 3, \\ldots\\}$ be the set of **natural numbers**. A number $p \\in \\mathbb{N}, p > 1$ is **prime** if $p$ has no factors different from $1$ and $p$. With a **prime factorization** $n = p_1 \\ldots p_n$, we understand the prime factors $p_j$ of $n$ to be ordered as $p_i \\leq p_{i+1}$. The **fundamental theorem of arithmetic** is:\n\n$$\\textbf{Theorem: } \\text{Every } n \\in \\mathbb{N}, n > 1 \\text{ has a unique prime factorization.}$$\nEuclid anticipated the result. **Carl Friedrich Gauss** gave in *1798* the first proof in his monograph *\"Disquisitiones Arithmeticae\"*. Within abstract algebra, the result is the statement that the ring of integers $\\mathbb{Z}$ is a **unique factorization domain**.",
+  "history": "",
+  "dependencies": [
+    {
+      "id": "euclids-lemma",
+      "name": "Euclid's Lemma",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "well-ordering",
+      "name": "Well-Ordering Principle",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "prime-numbers",
+      "name": "Prime Numbers",
+      "year": -300,
+      "parentIds": ["euclids-lemma"]
+    },
+    {
+      "id": "fundamental-theorem-arithmetic",
+      "name": "Fundamental Theorem of Arithmetic",
+      "year": 1798,
+      "parentIds": ["euclids-lemma", "well-ordering", "prime-numbers"]
+    }
+  ],
+  "proofs": [
+    {
+      "title": "Proof by Strong Induction",
+      "steps": [
+        {
+          "text": "Base case: n = 2 is prime, so it has the trivial prime factorization.",
+          "latex": "2 = 2"
+        },
+        {
+          "text": "Inductive step: Assume all integers from 2 to n-1 have unique prime factorizations. Consider n.",
+          "latex": "\\forall k \\in \\{2, \\ldots, n-1\\}: k \\text{ has unique factorization}"
+        },
+        {
+          "text": "If n is prime, then n itself is its unique prime factorization.",
+          "latex": "n = n"
+        },
+        {
+          "text": "If n is composite, then n = ab for some 1 < a, b < n. By the inductive hypothesis, a and b have unique prime factorizations.",
+          "latex": "n = ab = (p_1 \\cdots p_j)(q_1 \\cdots q_k)"
+        },
+        {
+          "text": "For uniqueness, suppose n has two factorizations. By Euclid's Lemma, if a prime divides a product, it divides one of the factors. This forces the factorizations to be identical up to reordering.",
+          "latex": "p | ab \\Rightarrow p | a \\text{ or } p | b"
+        }
+      ]
+    }
+  ],
+  "implications": [
+    "Every integer has a canonical representation as a product of prime powers",
+    "The ring of integers ℤ is a unique factorization domain (UFD)",
+    "GCD and LCM can be computed from prime factorizations",
+    "Foundation for modular arithmetic and cryptography (RSA)"
+  ],
+  "requisites": [
+    "Natural numbers and integers",
+    "Definition of prime numbers",
+    "Divisibility",
+    "Mathematical induction"
+  ],
+  "references": [
+    "Gauss, C.F., 'Disquisitiones Arithmeticae', 1801",
+    "Hardy, G.H. & Wright, E.M., 'An Introduction to the Theory of Numbers'",
+    "Euclid, 'Elements', Book VII"
+  ],
+  "externalLinks": [
+    { "title": "Wikipedia: Fundamental theorem of arithmetic", "url": "https://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic" },
+    { "title": "ProofWiki", "url": "https://proofwiki.org/wiki/Fundamental_Theorem_of_Arithmetic" }
+  ]
+}

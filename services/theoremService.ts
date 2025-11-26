@@ -27,6 +27,11 @@ export const getAllTheorems = (): TheoremIndex[] => {
   return theoremIndex;
 };
 
+// Get total theorem count
+export const getTheoremCount = (): number => {
+  return theoremIndex.length;
+};
+
 // Levenshtein distance for fuzzy matching
 const levenshteinDistance = (a: string, b: string): number => {
   const matrix: number[][] = [];

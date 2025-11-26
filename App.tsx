@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import TheoremPage from './pages/TheoremPage';
-import { fetchTheoremData } from './services/theoremService';
+import { fetchTheoremData, getTheoremCount } from './services/theoremService';
 import { TheoremData, AppState } from './types';
-import { Wifi, Cpu, Battery } from 'lucide-react';
+import { BookOpen, GitBranch, FileText } from 'lucide-react';
 
 const App: React.FC = () => {
   const [state, setState] = useState<AppState>(AppState.IDLE);
@@ -58,13 +58,30 @@ const App: React.FC = () => {
       <div className="h-8 border-b border-term-dim flex justify-between items-center px-4 text-xs bg-[#020202] z-50">
         <div className="flex space-x-4">
            <span className="font-bold cursor-pointer hover:text-white" onClick={() => { window.location.hash = ''; }}>[HOME]</span>
-           <span>STATUS: {state === AppState.LOADING_THEOREM ? 'FETCHING' : 'IDLE'}</span>
-           {data && <span className="text-term-accent">CURRENT: {data.name.toUpperCase()}</span>}
+           {data?.domain && <span className="text-term-warn">[{data.domain.toUpperCase().replace(/_/g, ' ')}]</span>}
+           {data && <span className="text-term-accent">{data.name.toUpperCase()}</span>}
+           {!data && state === AppState.LOADING_THEOREM && <span className="text-term-warn animate-pulse">LOADING...</span>}
         </div>
         <div className="flex space-x-4 text-term-dim">
-           <div className="flex items-center space-x-1"><span>CPU</span><Cpu size={10} /></div>
-           <div className="flex items-center space-x-1"><span>NET</span><Wifi size={10} /></div>
-           <div className="flex items-center space-x-1"><span>PWR</span><Battery size={10} /></div>
+           <div className="flex items-center space-x-1" title="Total theorems in database">
+             <span>THM</span>
+             <FileText size={10} />
+             <span className="text-term-accent">{getTheoremCount()}</span>
+           </div>
+           {data && (
+             <>
+               <div className="flex items-center space-x-1" title="Prerequisite dependencies">
+                 <span>DEP</span>
+                 <GitBranch size={10} />
+                 <span className="text-term-accent">{data.dependencies.length - 1}</span>
+               </div>
+               <div className="flex items-center space-x-1" title="Available proofs">
+                 <span>PRF</span>
+                 <BookOpen size={10} />
+                 <span className="text-term-accent">{data.proofs.length}</span>
+               </div>
+             </>
+           )}
         </div>
       </div>
 

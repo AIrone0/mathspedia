@@ -2,6 +2,7 @@ import React from 'react';
 import { TheoremData } from '../types';
 import DependencyGraph from '../components/DependencyGraph';
 import LatexRenderer from '../components/LatexRenderer';
+import FormattedText from '../components/FormattedText';
 import { ChevronRight, ExternalLink, Hash, BookOpen, Clock, Activity } from 'lucide-react';
 
 interface TheoremPageProps {
@@ -23,7 +24,7 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       {/* Header / Meta Strip */}
       <div className="col-span-12 border border-term-dim p-4 flex justify-between items-end bg-black">
         <div>
-           <div className="text-xs text-term-dim mb-1">ENTITY_ID: {data.id}</div>
+           {data.domain && <div className="text-xs text-term-dim mb-1">DOMAIN: {data.domain.toUpperCase()}</div>}
            <h1 className="text-4xl font-bold text-term-fg uppercase glow-text">{data.name}</h1>
         </div>
         <div className="text-right font-mono text-term-accent">
@@ -33,14 +34,12 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       </div>
 
       {/* Intro Box */}
-      <div className="col-span-12 md:col-span-8 border border-term-dim p-4 bg-black relative">
+      <div className="col-span-12 border border-term-dim p-4 bg-black relative">
         <SectionHeader title="INTRODUCTION" icon={<Hash size={14}/>} />
-        <p className="text-lg leading-relaxed text-gray-300 font-mono text-justify">
-          {data.introduction}
-        </p>
+        <FormattedText text={data.introduction} className="text-justify" />
       </div>
 
-       {/* Requisites Side Panel */}
+       {/* Requisites Side Panel md:col-span-8
        <div className="col-span-12 md:col-span-4 border border-term-dim p-4 bg-black flex flex-col">
          <SectionHeader title="REQUISITES / CONTEXT" icon={<Activity size={14}/>} />
          <ul className="space-y-1 text-sm font-mono flex-grow overflow-y-auto">
@@ -52,7 +51,7 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
              </li>
            ))}
          </ul>
-      </div>
+      </div>*/}
 
       {/* Timeline Graph */}
       <div className="col-span-12 border border-term-dim p-0 bg-black">
@@ -87,7 +86,7 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       <div className="col-span-12 md:col-span-4 space-y-4">
         <div className="border border-term-dim p-4 bg-black h-fit">
           <SectionHeader title="HISTORY" icon={<Clock size={14}/>} />
-          <p className="text-sm text-gray-400 font-mono leading-tight">{data.history}</p>
+          <FormattedText text={data.history} className="text-sm leading-tight" />
         </div>
 
         <div className="border border-term-dim p-4 bg-black h-fit">

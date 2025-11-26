@@ -13,6 +13,7 @@ export interface ProofStep {
 export interface TheoremData {
   id: string;
   name: string;
+  domain?: string; // Mathematical domain/field (e.g., "Number Theory", "Algebra", "Analysis")
   year: number;
   introduction: string;
   history: string;
