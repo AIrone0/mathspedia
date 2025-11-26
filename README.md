@@ -94,3 +94,19 @@ The `introduction` and `history` fields support rich text formatting:
 ```
 
 See `theorem-template.json` for a complete example.
+
+## Mathematical Domains
+
+Use these values for the `domain` field:
+
+| Domain | Description |
+|--------|-------------|
+| `Number_Theory` | Prime numbers, divisibility, modular arithmetic |
+| `Algebra` | Groups, rings, fields, linear algebra |
+| `Analysis` | Calculus, real/complex analysis, measure theory |
+| `Geometry` | Euclidean, differential, algebraic geometry |
+| `Topology` | Point-set, algebraic, differential topology |
+| `Combinatorics` | Counting, graph theory, discrete structures |
+| `Logic` | Mathematical logic, set theory, foundations |
+| `Probability` | Probability theory, statistics |
+| `Applied_Math` | Numerical methods, optimization, modeling |

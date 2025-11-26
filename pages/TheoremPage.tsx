@@ -24,11 +24,11 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       {/* Header / Meta Strip */}
       <div className="col-span-12 border border-term-dim p-4 flex justify-between items-end bg-black">
         <div>
-           {data.domain && <div className="text-xs text-term-dim mb-1">DOMAIN: {data.domain.toUpperCase()}</div>}
+           <div className="text-xs text-term-dim mb-1">ID: {data.id}</div>
            <h1 className="text-4xl font-bold text-term-fg uppercase glow-text">{data.name}</h1>
         </div>
         <div className="text-right font-mono text-term-accent">
-           <div className="text-2xl">{data.year}</div>
+           <div className="text-2xl">{data.year < 0 ? `${Math.abs(data.year)} BC` : data.year}</div>
            <div className="text-xs text-term-dim">DATE_PROVEN</div>
         </div>
       </div>

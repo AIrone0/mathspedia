@@ -1,0 +1,8 @@
+make it more fun where instead of just date prove, have like date, location by who like NFL draft.
+id useless if big name right underneath maybe other names of theorems.
+more than 1 domain for a theorem
+clickable domains on top bar
+add tabs to top bar
+add helix shortcuts to naviguate website.
+add main page showing ultimate
+improve styling.
