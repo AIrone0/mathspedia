@@ -1,6 +1,11 @@
 {
   "id": "eulers-identity",
   "name": "Euler's Identity",
+  "prover": {
+    "name": "Leonhard Euler",
+    "age": 41,
+    "flag": "🇨🇭"
+  },
   "year": 1748,
   "introduction": "Euler's identity is the equality e^(iπ) + 1 = 0, which connects five fundamental mathematical constants: e (Euler's number), i (imaginary unit), π (pi), 1 (multiplicative identity), and 0 (additive identity). It is a special case of Euler's formula e^(ix) = cos(x) + i·sin(x) when x = π. Often called 'the most beautiful equation in mathematics,' it elegantly unifies algebra, geometry, and analysis.",
   "history": "Leonhard Euler (1707-1783) published this result in his 'Introductio in analysin infinitorum' in 1748. The identity emerges from his work on complex exponentials and their relationship to trigonometric functions. Euler's profound insight connected seemingly unrelated areas of mathematics and laid groundwork for complex analysis. The formula's beauty lies in its simplicity despite encoding deep mathematical truths about periodicity, growth, and rotation.",

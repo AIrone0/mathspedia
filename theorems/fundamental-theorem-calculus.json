@@ -1,6 +1,11 @@
 {
   "id": "fundamental-theorem-calculus",
   "name": "Fundamental Theorem of Calculus",
+  "prover": {
+    "name": "Isaac Newton & G.W. Leibniz",
+    "age": 24,
+    "flag": "🇬🇧 🇩🇪"
+  },
   "year": 1668,
   "introduction": "The Fundamental Theorem of Calculus establishes the relationship between differentiation and integration, the two main operations in calculus. It consists of two parts: the first states that integration and differentiation are inverse operations, while the second provides a method for evaluating definite integrals. This theorem bridges the gap between the instantaneous (derivatives) and the cumulative (integrals).",
   "history": "While Newton and Leibniz independently developed calculus in the late 17th century, the theorem's roots trace to earlier work by James Gregory (1668) and Isaac Barrow (1670). Newton's approach used 'fluxions' while Leibniz developed the notation we use today. The rigorous formulation came later through Cauchy, Riemann, and Lebesgue in the 19th century. This theorem is considered one of the most important discoveries in mathematics.",

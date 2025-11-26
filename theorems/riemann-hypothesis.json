@@ -1,6 +1,11 @@
 {
   "id": "riemann-hypothesis",
   "name": "Riemann Hypothesis",
+  "prover": {
+    "name": "Bernhard Riemann",
+    "age": 33,
+    "flag": "🇩🇪"
+  },
   "year": 1859,
   "introduction": "The Riemann Hypothesis is one of the most important unsolved problems in mathematics. It conjectures that all non-trivial zeros of the Riemann zeta function ζ(s) have real part equal to 1/2. In other words, if ζ(s) = 0 and s is not a negative even integer, then s = 1/2 + it for some real number t. This hypothesis has profound implications for the distribution of prime numbers.",
   "history": "Bernhard Riemann proposed this hypothesis in his 1859 paper 'On the Number of Primes Less Than a Given Magnitude.' The conjecture emerged from his study of the zeta function's connection to prime number distribution. Despite over 160 years of effort by the world's best mathematicians, it remains unproven. It is one of the seven Millennium Prize Problems, with a $1 million prize for its solution. Computational verification has confirmed billions of zeros lie on the critical line, but a proof remains elusive.",

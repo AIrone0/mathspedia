@@ -23,7 +23,7 @@ const LatexRenderer: React.FC<LatexRendererProps> = ({ expression, block = false
 
   return (
     <span 
-      className={block ? "block my-2 text-term-accent" : "text-term-accent"}
+      className={block ? "block my-2" : ""}
       dangerouslySetInnerHTML={{ __html: html }} 
     />
   );

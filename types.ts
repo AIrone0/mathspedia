@@ -10,10 +10,19 @@ export interface ProofStep {
   latex?: string;
 }
 
+export interface Prover {
+  name: string;
+  age: number;
+  flag: string; // Country flag emoji
+  nationality?: string;
+  circumstance?: string;
+}
+
 export interface TheoremData {
   id: string;
   name: string;
   domain?: string; // Mathematical domain/field (e.g., "Number Theory", "Algebra", "Analysis")
+  prover?: Prover;
   year: number;
   introduction: string;
   history: string;

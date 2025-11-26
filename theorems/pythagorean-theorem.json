@@ -1,6 +1,11 @@
 {
   "id": "pythagorean-theorem",
   "name": "Pythagorean Theorem",
+  "prover": {
+    "name": "Pythagoras of Samos",
+    "age": 40,
+    "flag": "🇬🇷"
+  },
   "year": -500,
   "introduction": "The Pythagorean theorem states that in a right-angled triangle, the square of the length of the hypotenuse (the side opposite the right angle) equals the sum of the squares of the lengths of the other two sides. This fundamental relation in Euclidean geometry is expressed as a² + b² = c², where c represents the hypotenuse and a, b represent the other two sides.",
   "history": "Although the theorem bears Pythagoras's name (c. 570–495 BCE), evidence suggests that the Babylonians knew this relationship over a thousand years earlier. The theorem appears on a Babylonian tablet (Plimpton 322) dating to approximately 1800 BCE. Pythagoras, or members of his school, are credited with providing the first known proof. The theorem has been proven in hundreds of different ways throughout history, with Euclid's proof in Elements (c. 300 BCE) being one of the most famous.",

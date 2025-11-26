@@ -25,7 +25,16 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       {/* Header / Meta Strip */}
       <div className="col-span-12 border border-term-dim p-4 flex justify-between items-end bg-black">
         <div>
-           <div className="text-xs text-term-dim mb-1">ID: {data.id}</div>
+           {/* {data.prover ? (
+             <div className="text-xs text-term-dim mb-1 font-mono">
+               <span className="text-term-accent">{data.prover.name}</span>
+               <span className="mx-2">•</span>
+               <span>{data.prover.age} years old</span>
+               <span className="ml-2">{data.prover.flag}</span>
+             </div>
+           ) : (
+             <div className="text-xs text-term-dim mb-1">ID: {data.id}</div>
+           )} */}
            <h1 className="text-4xl font-bold text-term-fg uppercase glow-text">{data.name}</h1>
         </div>
         <div className="text-right font-mono text-term-accent">
@@ -44,7 +53,7 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
        <div className="col-span-12 md:col-span-4 border border-term-dim p-4 bg-black flex flex-col">
          {data.id === 'fundamental-theorem-arithmetic' ? (
            <>
-             <SectionHeader title="INTERACTIVE DEMO" icon={<Sparkles size={14}/>} />
+             <SectionHeader title="VISUALIZATION" icon={<Sparkles size={14}/>} />
              <PrimeFactorizationViz />
            </>
          ) : (
@@ -68,8 +77,14 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
         <DependencyGraph nodes={data.dependencies} onNodeClick={onNavigate} />
       </div>
 
+      {/* History */}
+      <div className="col-span-12 border border-term-dim p-4 bg-black">
+        <SectionHeader title="HISTORY" icon={<Clock size={14}/>} />
+        <FormattedText text={data.history} className="text-sm leading-tight" />
+      </div>
+
       {/* Proofs Section */}
-      <div className="col-span-12 md:col-span-8 border border-term-dim p-4 bg-black">
+      <div className="col-span-12 border border-term-dim p-4 bg-black">
         <SectionHeader title="MATHEMATICAL PROOF(S)" icon={<BookOpen size={14}/>} />
         <div className="space-y-6">
           {data.proofs.map((proof, pIdx) => (
@@ -92,34 +107,28 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
         </div>
       </div>
 
-      {/* History & Implications */}
-      <div className="col-span-12 md:col-span-4 space-y-4">
-        <div className="border border-term-dim p-4 bg-black h-fit">
-          <SectionHeader title="HISTORY" icon={<Clock size={14}/>} />
-          <FormattedText text={data.history} className="text-sm leading-tight" />
-        </div>
-
-        <div className="border border-term-dim p-4 bg-black h-fit">
-          <SectionHeader title="IMPLICATIONS" />
-          <ul className="list-square list-inside text-sm text-term-accent space-y-1">
-            {data.implications.map((imp, idx) => (
-              <li key={idx}><span className="text-gray-400">{imp}</span></li>
-            ))}
-          </ul>
-        </div>
+      {/* Implications */}
+      <div className="col-span-12 border border-term-dim p-4 bg-black">
+        <SectionHeader title="IMPLICATIONS" />
+        <ul className="list-square list-inside text-sm text-term-accent space-y-1">
+          {data.implications.map((imp, idx) => (
+            <li key={idx}><span className="text-gray-400">{imp}</span></li>
+          ))}
+        </ul>
+      </div>
         
-        <div className="border border-term-dim p-4 bg-black h-fit">
-          <SectionHeader title="EXTERNAL_LINKS" icon={<ExternalLink size={14}/>} />
-           <ul className="text-xs space-y-2">
-             {data.externalLinks.map((link, idx) => (
-               <li key={idx}>
-                 <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white text-term-dim underline decoration-dotted">
-                   [{idx}] {link.title}
-                 </a>
-               </li>
-             ))}
-           </ul>
-        </div>
+      {/* External Links */}
+      <div className="col-span-12 border border-term-dim p-4 bg-black">
+        <SectionHeader title="EXTERNAL_LINKS" icon={<ExternalLink size={14}/>} />
+         <ul className="text-xs space-y-2">
+           {data.externalLinks.map((link, idx) => (
+             <li key={idx}>
+               <a href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white text-term-dim underline decoration-dotted">
+                 [{idx}] {link.title}
+               </a>
+             </li>
+           ))}
+         </ul>
       </div>
       
     </div>
@@ -127,3 +136,4 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
 };
 
 export default TheoremPage;
+

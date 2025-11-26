@@ -328,6 +328,15 @@ const PrimeFactorizationViz: React.FC = () => {
       {/* Factorization Tree */}
       <div ref={containerRef} className="flex-1 border border-term-dim bg-[#020202] relative overflow-hidden mb-3">
         <div className="absolute top-1 left-2 text-[10px] text-term-dim">FACTORIZATION_TREE</div>
+        {/* Path animation - top right */}
+        <div className="absolute top-1 right-2 text-[10px] text-term-dim">
+          PATH_TO_1: {pathAnimation.map((n, i) => (
+            <span key={i}>
+              {i > 0 && <span className="mx-1">→</span>}
+              <span className={n === 1 ? 'text-term-fg' : 'text-term-accent'}>{n}</span>
+            </span>
+          ))}
+        </div>
         <svg width="100%" height="200" viewBox={`0 0 ${viewBoxWidth} 200`} className="mt-4">
           {tree && renderTree(tree)}
         </svg>
@@ -335,7 +344,7 @@ const PrimeFactorizationViz: React.FC = () => {
 
       {/* Building Blocks */}
       {showBlocks && (
-        <div className="border border-term-dim bg-[#020202] p-2 mb-3 animate-fade-in">
+        <div className="border border-term-dim bg-[#020202] p-2 animate-fade-in">
           <div className="text-[10px] text-term-dim mb-2">PRIME_BLOCKS</div>
           <div className="flex flex-wrap gap-1 justify-center">
             {factors.map((p, i) => (
@@ -350,13 +359,8 @@ const PrimeFactorizationViz: React.FC = () => {
               </div>
             ))}
           </div>
-        </div>
-      )}
 
-      {/* Result */}
-      {showBlocks && (
-        <div className="border border-term-dim bg-[#020202] p-2 animate-fade-in">
-          <div className="text-[10px] text-term-dim mb-1">UNIQUE_FACTORIZATION</div>
+          <div className="text-[10px] text-term-dim mt-2">UNIQUE_FACTORIZATION</div>
           <div className="text-center font-mono">
             <span className="text-term-fg text-lg">{number}</span>
             <span className="text-term-dim mx-2">=</span>
@@ -367,16 +371,6 @@ const PrimeFactorizationViz: React.FC = () => {
                   {prime}
                   {count > 1 && <sup>{count}</sup>}
                 </span>
-              </span>
-            ))}
-          </div>
-          
-          {/* Path animation */}
-          <div className="mt-2 text-[10px] text-term-dim">
-            PATH_TO_1: {pathAnimation.map((n, i) => (
-              <span key={i}>
-                {i > 0 && <span className="mx-1">→</span>}
-                <span className={n === 1 ? 'text-term-fg' : 'text-term-accent'}>{n}</span>
               </span>
             ))}
           </div>

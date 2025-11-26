@@ -59,7 +59,7 @@ const App: React.FC = () => {
         <div className="flex space-x-4">
            <span className="font-bold cursor-pointer hover:text-white" onClick={() => { window.location.hash = ''; }}>[HOME]</span>
            {data?.domain && <span className="text-term-warn">[{data.domain.toUpperCase().replace(/_/g, ' ')}]</span>}
-           {data && <span className="text-term-accent">{data.name.toUpperCase()}</span>}
+           {/* {data && <span className="text-term-accent">{data.id.toUpperCase().replace(/-/g, '_')}</span>} */}
            {!data && state === AppState.LOADING_THEOREM && <span className="text-term-warn animate-pulse">LOADING...</span>}
         </div>
         <div className="flex space-x-4 text-term-dim">

@@ -2,6 +2,11 @@
   "id": "theorem-slug-here",
   "name": "Full Theorem Name",
   "domain": "Number_Theory",
+  "prover": {
+    "name": "Mathematician Name",
+    "age": 30,
+    "flag": "🏳️"
+  },
   "year": 1900,
   "introduction": "A concise **technical summary** of the theorem. Supports *italic text* and LaTeX like $\\mathbb{N}$ for natural numbers or $\\mathbb{R}$ for reals.\n\n\tIndented paragraphs start with a tab character.\n\nCentered block equations use double dollar signs:\n\n$$\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$$\n\nUse **double asterisks** for bold, *single asterisks* or _underscores_ for italic.",
   "history": "Historical context: who discovered/proved it, when, and why it matters. Also supports **bold**, *italic*, and $LaTeX$.",

@@ -53,7 +53,7 @@ const HomePage: React.FC<HomePageProps> = ({ onSearch, isLoading }) => {
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="ENTER THEOREM DESIGNATION..."
+              placeholder="ENTER THEOREM..."
               className="w-full bg-[#050505] border border-term-dim p-4 pl-10 text-xl font-mono text-term-fg focus:outline-none focus:border-term-fg focus:ring-1 focus:ring-term-fg placeholder-term-dim/50 uppercase"
               autoFocus
               disabled={isLoading}
@@ -114,9 +114,9 @@ const HomePage: React.FC<HomePageProps> = ({ onSearch, isLoading }) => {
         </div>
       </div>
       
-      <div className="absolute bottom-4 text-[10px] text-term-dim text-center w-full">
+      {/* <div className="absolute bottom-4 text-[10px] text-term-dim text-center w-full">
          SYS_OP: ONLINE // MEM: LOCAL // MODE: VISUAL // (C) OMNI_CORP
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -40,7 +40,7 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
       const boldMatch = remaining.match(/^\*\*([^*]+)\*\*/);
       if (boldMatch) {
         tokens.push(
-          <strong key={`${key}-${tokenKey++}`} className="text-term-fg font-bold">
+          <strong key={`${key}-${tokenKey++}`} className="font-bold">
             {boldMatch[1]}
           </strong>
         );
@@ -52,7 +52,7 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
       const italicMatch = remaining.match(/^(\*([^*]+)\*|_([^_]+)_)/);
       if (italicMatch) {
         tokens.push(
-          <em key={`${key}-${tokenKey++}`} className="italic text-term-accent">
+          <em key={`${key}-${tokenKey++}`} className="italic">
             {italicMatch[2] || italicMatch[3]}
           </em>
         );

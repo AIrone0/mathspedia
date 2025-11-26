@@ -2,6 +2,11 @@
   "id": "fundamental-theorem-arithmetic",
   "name": "Fundamental Theorem of Arithmetic",
   "domain": "Number_Theory",
+  "prover": {
+    "name": "Carl Friedrich Gauss",
+    "age": 21,
+    "flag": "🇩🇪"
+  },
   "year": 1798,
   "introduction": "Let $\\mathbb{N} = \\{0, 1, 2, 3, \\ldots\\}$ be the set of **natural numbers**. A number $p \\in \\mathbb{N}, p > 1$ is **prime** if $p$ has no factors different from $1$ and $p$. With a **prime factorization** $n = p_1 \\ldots p_n$, we understand the prime factors $p_j$ of $n$ to be ordered as $p_i \\leq p_{i+1}$. The **fundamental theorem of arithmetic** is:\n\n$$\\textbf{Theorem: } \\text{Every } n \\in \\mathbb{N}, n > 1 \\text{ has a unique prime factorization.}$$\nEuclid anticipated the result. **Carl Friedrich Gauss** gave in *1798* the first proof in his monograph *\"Disquisitiones Arithmeticae\"*. Within abstract algebra, the result is the statement that the ring of integers $\\mathbb{Z}$ is a **unique factorization domain**.",
   "history": "",
