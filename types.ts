@@ -3,6 +3,9 @@ export interface DependencyNode {
   name: string;
   year: number; // Year proven (approximate)
   parentIds: string[]; // IDs of theorems this directly depends on
+  author?: string; // Who proved/discovered this
+  source?: string; // Book/paper where this appears (e.g., "Elements VII.30")
+  comment?: string; // Description/tooltip text
 }
 
 export interface ProofStep {

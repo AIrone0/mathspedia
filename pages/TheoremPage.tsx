@@ -25,17 +25,14 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       {/* Header / Meta Strip */}
       <div className="col-span-12 border border-term-dim p-4 flex justify-between items-end bg-black">
         <div>
+        <h1 className="text-4xl font-bold text-term-fg uppercase glow-text">{data.name}</h1>
            {/* {data.prover ? (
              <div className="text-xs text-term-dim mb-1 font-mono">
                <span className="text-term-accent">{data.prover.name}</span>
-               <span className="mx-2">•</span>
-               <span>{data.prover.age} years old</span>
-               <span className="ml-2">{data.prover.flag}</span>
              </div>
            ) : (
              <div className="text-xs text-term-dim mb-1">ID: {data.id}</div>
            )} */}
-           <h1 className="text-4xl font-bold text-term-fg uppercase glow-text">{data.name}</h1>
         </div>
         <div className="text-right font-mono text-term-accent">
            <div className="text-2xl">{data.year < 0 ? `${Math.abs(data.year)} BC` : data.year}</div>
@@ -93,7 +90,9 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
               <div className="space-y-4">
                 {proof.steps.map((step, sIdx) => (
                   <div key={sIdx} className="mb-2">
-                    <p className="text-gray-400 text-sm mb-1">{sIdx + 1}. {step.text}</p>
+                    <div className="text-gray-400 text-sm mb-1">
+                      <FormattedText text={step.text} className="inline text-sm text-gray-400" />
+                    </div>
                     {step.latex && (
                       <div className="bg-term-dim/10 p-2 border border-term-dim/30">
                         <LatexRenderer expression={step.latex} block />

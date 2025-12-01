@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import * as d3 from 'd3';
 import { DependencyNode } from '../types';
+import { GitBranch } from 'lucide-react';
 
 interface DependencyGraphProps {
   nodes: DependencyNode[];
@@ -11,6 +12,9 @@ interface GraphNode extends d3.SimulationNodeDatum {
   id: string;
   name: string;
   year: number;
+  author?: string;
+  source?: string;
+  comment?: string;
   original: DependencyNode;
   x?: number;
   y?: number;
@@ -31,6 +35,9 @@ const DependencyGraph: React.FC<DependencyGraphProps> = ({ nodes, onNodeClick })
       id: n.id,
       name: n.name,
       year: n.year,
+      author: n.author,
+      source: n.source,
+      comment: n.comment,
       original: n,
     }));
 
@@ -77,7 +84,14 @@ const DependencyGraph: React.FC<DependencyGraphProps> = ({ nodes, onNodeClick })
       .force("x", d3.forceX<GraphNode>(d => timeScale(d.year)).strength(2.5)) // Stronger pull to time
       .force("y", d3.forceY(height / 2).strength(0.15));
 
-    // 3. Drawing Elements
+    // 3. Tooltip
+    const tooltip = d3.select(containerRef.current)
+      .append("div")
+      .attr("class", "absolute pointer-events-none bg-black border border-term-fg/50 px-2 py-1 text-xs text-term-fg font-mono z-50 max-w-[250px]")
+      .style("opacity", 0)
+      .style("transition", "opacity 0.15s");
+
+    // 4. Drawing Elements
     const g = svg.append("g");
 
     // Axis
@@ -109,7 +123,25 @@ const DependencyGraph: React.FC<DependencyGraphProps> = ({ nodes, onNodeClick })
       .data(graphNodes)
       .enter().append("g")
       .attr("cursor", "pointer")
-      .on("click", (event, d) => onNodeClick(d.name));
+      .on("click", (event, d) => onNodeClick(d.name))
+      .on("mouseenter", (event, d) => {
+        // Build tooltip with year and comment
+        const yearText = `<span style="color: #00ff41">${d.year}</span>`;
+        const commentText = d.comment ? `<br/>${d.comment}` : '';
+        tooltip
+          .html(yearText + commentText)
+          .style("left", `${event.offsetX + 10}px`)
+          .style("top", `${event.offsetY - 10}px`)
+          .style("opacity", 1);
+      })
+      .on("mousemove", (event) => {
+        tooltip
+          .style("left", `${event.offsetX + 10}px`)
+          .style("top", `${event.offsetY - 10}px`);
+      })
+      .on("mouseleave", () => {
+        tooltip.style("opacity", 0);
+      });
 
     // Node Circles
     node.append("circle")
@@ -138,14 +170,28 @@ const DependencyGraph: React.FC<DependencyGraphProps> = ({ nodes, onNodeClick })
         .attr("font-size", "12px")
         .style("text-shadow", "0px 0px 4px #000"); // Shadow for readability over lines
 
-      // Date
-      el.append("text")
-        .text(`(${d.year})`)
+      // Source (italic), Year, Author
+      const metaText = el.append("text")
         .attr("x", xOffset)
         .attr("y", isUp ? -22 : 32)
         .attr("text-anchor", textAnchor)
         .attr("fill", "#008F11")
         .attr("font-size", "10px");
+      
+      // Add source in italic if available
+      if (d.source) {
+        metaText.append("tspan")
+          .text(d.source)
+          .attr("font-style", "italic");
+      }
+      
+      // Add author if available
+      if (d.author) {
+        if (d.source) {
+          metaText.append("tspan").text(", ");
+        }
+        metaText.append("tspan").text(d.author);
+      }
     });
 
     // Simulation Tick
@@ -160,11 +206,19 @@ const DependencyGraph: React.FC<DependencyGraphProps> = ({ nodes, onNodeClick })
         .attr("transform", d => `translate(${d.x},${d.y})`);
     });
 
+    // Cleanup tooltip on unmount/re-render
+    return () => {
+      tooltip.remove();
+    };
+
   }, [graphNodes, graphLinks, onNodeClick]); // Removed width dependency to prevent loop, relied on ref read inside effect
 
   return (
-    <div ref={containerRef} className="w-full h-[400px] border border-term-dim bg-[#020202] relative overflow-hidden">
-        <div className="absolute top-0 left-0 p-2 text-xs text-term-dim">TIME_SERIES::DEPENDENCY_TREE</div>
+    <div ref={containerRef} className="w-full h-[400px] bg-[#020202] relative overflow-hidden">
+      <div className="flex items-center space-x-2 bg-term-dim/20 border-b border-term-dim p-1">
+        <span className="text-term-warn"><GitBranch size={14} /></span>
+        <h3 className="font-bold text-term-fg uppercase tracking-widest text-sm">DEPENDENCY_TREE</h3>
+      </div>
       <svg ref={svgRef} className="w-full h-full" />
     </div>
   );

@@ -1,6 +1,9 @@
 {
   "id": "fundamental-theorem-arithmetic",
   "name": "Fundamental Theorem of Arithmetic",
+  "paper": "Disquisitiones Arithmeticae",
+  "paperPart": "Theorem 16",
+  "paperYear": 1801,
   "domain": "Number_Theory",
   "prover": {
     "name": "Carl Friedrich Gauss",
@@ -8,35 +11,55 @@
     "flag": "🇩🇪"
   },
   "year": 1798,
-  "introduction": "Let $\\mathbb{N} = \\{0, 1, 2, 3, \\ldots\\}$ be the set of **natural numbers**. A number $p \\in \\mathbb{N}, p > 1$ is **prime** if $p$ has no factors different from $1$ and $p$. With a **prime factorization** $n = p_1 \\ldots p_n$, we understand the prime factors $p_j$ of $n$ to be ordered as $p_i \\leq p_{i+1}$. The **fundamental theorem of arithmetic** is:\n\n$$\\textbf{Theorem: } \\text{Every } n \\in \\mathbb{N}, n > 1 \\text{ has a unique prime factorization.}$$\nEuclid anticipated the result. **Carl Friedrich Gauss** gave in *1798* the first proof in his monograph *\"Disquisitiones Arithmeticae\"*. Within abstract algebra, the result is the statement that the ring of integers $\\mathbb{Z}$ is a **unique factorization domain**.",
-  "history": "",
+  "introduction": "Let $\\mathbb{N} = \\{0, 1, 2, 3, \\ldots\\}$ be the set of **natural numbers**. A number $p \\in \\mathbb{N}, p > 1$ is **prime** if $p$ has no factors different from $1$ and $p$. With a **prime factorization** $n = p_1 \\ldots p_n$, we understand the prime factors $p_j$ of $n$ to be ordered as $p_i \\leq p_{i+1}$. The **fundamental theorem of arithmetic** is:\n\n$$\\text{Every } n \\in \\mathbb{N}, n > 1 \\text{ has a unique prime factorization.}$$\nEuclid anticipated the result. **Carl Friedrich Gauss** gave in *1798* the first proof in his monograph *\"Disquisitiones Arithmeticae\"*. Within abstract algebra, the result is the statement that the ring of integers $\\mathbb{Z}$ is a **unique factorization domain**.",
+  "history": "The first distinction between numbers that can be factored and those that cannot appears around 1850 B.C. in the Rhind Mathematical Papyrus written by the Egyptian scribe Ahmes. It lists decompositions of fractions of the form 2/n into sums of distinct unit fractions (2/3 = 1/2 + 1/6, 2/5 = 1/3 + 1/15, ..., 2/101 = 1/101 + 1/202 + 1/303 + 1/606), using different methods depending on whether n was prime.\n\nStarting from the 6th century BC, The Pythagoreans studied numbers both philosophically and geometrically. They believed that \"Numbers are the building blocks of reality\" and Thymaridas described prime numbers as \"rectilinear\" because they extend in one dimension (since the only measure of it, excluding the number itself, is 1).\n\nAround 300 B.C., Euclid was a Greek mathematician working in Alexandria, a newly founded city. The Library of Alexandria had not yet been built, but the city was already a center of Greek culture, where Pythagorean work was preserved and studied. Euclid compiled the theorems of his predecessors and transformed their philosophical and geometrical ideas into axioms and theorems with proofs. In his 13-book Elements, covering geometry, number theory, and incommensurability, he presented the first systematic definitions and properties of prime numbers:\n\n| Chapter | Original Writing | Meaning in Today's Math |\n| Book VII, Definition 11 | \"A prime number is that which is measured by a unit alone.\" | The only proper divisor of a prime number is 1 (For Euclid, it was the unit rather than a number).|\n| Book VII, Proposition 30 (Euclid's lemma)| \"If two numbers, multiplied by one another make some number, and any prime number measures the product, then it also measures one of the original numbers.\" | If a prime p divides the product ab of two integers a and b, then p must divide at least one of those integers a or b.|\n| Book VII, Proposition 31 | \"Any composite number is measured by some prime number.\" | Every number is either prime or divisible by a prime.|\n| Book IX, Proposition 14 | \"If a number is the least that is measured by prime numbers, then it is not measured by any other prime number except those originally measuring it.\" | If a prime p divides the product ab of two integers a and b, then p must divide at least one of those integers a or b.|\n\nProposition 30 proves the first part of the theorem that any number can be decomposed into primes. Pick some primes, e.g., 2, 3, 5. Multiply them: 2⋅3⋅5=30. 30 is the least number divisible by 2, 3, and 5. No other prime (like 7, 11, etc.) divides 30. Only the original primes you multiplied do.\n\nConnection to uniqueness of factorization: This proves a special case: when each prime occurs once (exponent = 1), the decomposition into primes is unique. It doesn't yet cover cases where primes repeat (like 2²⋅3). the logical rigor of Euclid was not surpassed until the 19th century, The general case of uniqueness besides the order will be proved 2000 years later by 21-year-old Carl Friedrich Gauss (1777), who reportedly gave a clever sum of the integers from 1 to 100 at a very young age, began studying mathematics at the University of Göttingen. Gauss studied the work of predecessors (like Leonhard Euler, Joseph-Louis Lagrange, Adrien-Marie Legendre, etc.), but often found that results could be better organized, clarified, or generalized. Thus, by the late 1790s he was in the position to think beyond isolated arithmetic facts. Around 1798, Gauss worked on what would become his magnum opus in number theory. In it, he proves the second part of the theorem, the uniqueness, became a principle: \"unique factorization\" as a foundational axiom of integer arithmetic, which would then be used to write modular arithmetic. Quadratic reciprocity is the central theorem of his Disquisitiones. With the publication of Disquisitiones Arithmeticae in 1801, a new era was born — the \"modern theory of numbers\": number theory became a coherent, systematic discipline. Gauss's original method for proving is: He proved uniqueness using minimal counterexample reasoning plus Euclid's Lemma. In today's proof writing, the minimal counterexample reasoning is known to be logically equivalent to implicit induction and therefore explicit induction + Euclid's Lemma, because it's clearer and fits modern axiomatic style. His theorem has been extended to bigger number systems, algebra, geometry and topology. Whenever objects have a \"discrete arithmetic skeleton,\" UFD ideas appear. Unique factorization lets you reduce problems about all integers to problems about primes only, therefore has infinite applications nowadays, such as: Cryptography & cybersecurity (RSA literally works because every number factors uniquely, but factoring is hard computationally.), Signal processing. Fast Fourier Transform (FFT) algorithms use factorization of the length N and unique factorization makes these decompositions systematic and efficient. Error-correcting codes use polynomial rings that behave like integer factorization which rely on UFD-like structure of polynomials. Computer algebra systems like Mathematica and Sage. Chemistry & physics (Lattice structures in crystal theory and atomic arrangements mimic arithmetic factorization). The failure of the unique factorization to certains like rationals, whole proofs collapsed, including attempts on Fermat's Last Theorem and led to the fix: Dedekind's invention of ideals, new abstract objects that always factor uniquely.",
   "dependencies": [
     {
       "id": "euclids-lemma",
       "name": "Euclid's Lemma",
       "year": -300,
-      "parentIds": []
+      "parentIds": [],
+      "author": "Euclid",
+      "source": "Elements VII.30",
+      "comment": "If a prime number divides a product of two numbers, then it divides at least one of the factors."
     },
     {
-      "id": "well-ordering",
-      "name": "Well-Ordering Principle",
+      "id": "factorization-of-composite-numbers",
+      "name": "Factorization of Composite Numbers",
       "year": -300,
-      "parentIds": []
-    },
-    {
-      "id": "prime-numbers",
-      "name": "Prime Numbers",
-      "year": -300,
-      "parentIds": ["euclids-lemma"]
+      "parentIds": [],
+      "author": "Euclid",
+      "source": "Elements VII.31",
+      "comment": "Every composite number can be expressed as a product of prime numbers."
     },
     {
       "id": "fundamental-theorem-arithmetic",
       "name": "Fundamental Theorem of Arithmetic",
       "year": 1798,
-      "parentIds": ["euclids-lemma", "well-ordering", "prime-numbers"]
+      "parentIds": ["euclids-lemma", "factorization-of-composite-numbers"],
+      "author": "Carl Friedrich Gauss",
+      "source": "Disquisitiones Arithmeticae §16",
+      "comment": "Every integer greater than 1 has a unique prime factorization."
     }
   ],
   "proofs": [
+    {
+      "title": "Introduction",
+      "steps": [
+        {
+          "text": "**Introduction**\n\nWhen working out a proof, a good first step is to state the problem carefully and give names to things. A complete formulation for the fundamental theorem of arithmetic could be: \n\n*Any positive whole number may be represented as a product of prime numbers; moreover, such representation is unique except for the order of the multipliers.* \n\nAlmost always, if you want to prove that something happens exactly once, then you need to show that it happens at least once and that it happens at most once. Therefore, we can split the theorem in 2 claims: First, existence: every positive integer can be represented as a product of primes. Second, uniqueness: whenever that representation exists, the product is unique apart from the order of the primes.",
+          "latex": "\\text{Claim 1. Let } n \\text{ be a positive integer. Then there exists a sequence } (p_1,\\ldots,p_r) \\text{ of prime numbers such that } p_1p_2\\ldots p_r=n. \\\\ \\\\ \\text{Claim 2. Let } p_1\\leq p_2\\leq\\ldots\\leq p_r \\text{ and } q_1\\leq q_2\\leq\\ldots\\leq q_s \\text{ be primes such that } p_1\\ldots p_r=q_1\\ldots q_s. \\text{ Then } r=s \\text{ and } p_i=q_i \\text{ for every } i\\in\\{1,2,\\ldots,r\\}."
+        },
+        {
+          "text": "**Integer is Expressible as Product of Primes**\n\n",
+          "latex": ""
+        },
+        {
+          "text": "Expression for Integer as Product of Primes is Unique",
+          "latex": ""
+        }
+      ]
+    },
     {
       "title": "Proof by Strong Induction",
       "steps": [

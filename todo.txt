@@ -6,4 +6,16 @@ add tabs to top bar
 add helix shortcuts to naviguate website.
 add main page showing ultimate
 improve styling.
-rewirte d3.js using webgpu for faster.
+rewrite d3.js using webgpu for faster.
+make it terminal compatible so I can write directely.
+
+one were simply asked to come up with a proof?
+ Would there be any chance of discovering that sequence of lemmas? 
+ I maintain that there would — if, that is, you are aware of certain general tricks
+
+
+
+How the theorem came to be historically
+
+write the proof in a sequence of lemmas where you think "I could find it myself" if
+aware of methods and other theorems (written in the dash). 

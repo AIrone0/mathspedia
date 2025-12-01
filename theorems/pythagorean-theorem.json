@@ -33,6 +33,30 @@
       "name": "Pythagorean Theorem",
       "year": -500,
       "parentIds": ["similar-triangles", "area-squares"]
+    },
+    {
+      "id": "infinitude-of-primes",
+      "name": "Euclid’s proof of the infinitude of primes",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "euclidean-algorithm",
+      "name": "Euclidean algorithm",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "symbolic-algebra",
+      "name": "Symbolic algebra",
+      "year": -300,
+      "parentIds": []
+    },
+    {
+      "id": "proof-by-induction",
+      "name": "Proof by induction",
+      "year": -300,
+      "parentIds": []
     }
   ],
   "proofs": [
