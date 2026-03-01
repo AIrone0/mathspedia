@@ -64,6 +64,12 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #005500;
       }
+      /* Clearfix for floated images */
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
       /* CRT scanline effect - commented out for cleaner text
       .crt::before {
         content: " ";

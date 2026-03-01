@@ -81,7 +81,7 @@ const TheoremPage: React.FC<TheoremPageProps> = ({ data, onNavigate }) => {
       </div>
 
       {/* Proofs Section */}
-      <div className="col-span-12 border border-term-dim p-4 bg-black">
+      <div id="mathematical-proof" className="col-span-12 border border-term-dim p-4 bg-black">
         <SectionHeader title="MATHEMATICAL PROOF(S)" icon={<BookOpen size={14}/>} />
         <div className="space-y-6">
           {data.proofs.map((proof, pIdx) => (

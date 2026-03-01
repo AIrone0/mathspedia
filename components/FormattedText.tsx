@@ -14,7 +14,11 @@ interface FormattedTextProps {
  * - $$latex$$ → centered block LaTeX
  * - Lines starting with \t or 4 spaces → indented
  * - Empty lines → paragraph breaks
- * - ![alt](url) → images
+ * - ![alt](url) → centered block image
+ * - ![alt:left](url) or ![:left](url) → float left with text wrap
+ * - ![alt:right](url) or ![:right](url) → float right with text wrap
+ * - ![alt:inline](url) → inline image
+ * - [text](url) → clickable links
  * - | col | col | tables → markdown tables
  */
 const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) => {
@@ -27,27 +31,77 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
     let remaining = content;
     let tokenKey = 0;
 
+    // Helper to parse image alt text for position modifier (using : to avoid conflict with table |)
+    const parseImageAlt = (altText: string): { alt: string; position: 'left' | 'right' | 'inline' | 'center' } => {
+      // Check for :position at the end or :position at the start
+      const endMatch = altText.match(/^(.*):(left|right|inline|center)$/i);
+      if (endMatch) {
+        return { alt: endMatch[1].trim(), position: endMatch[2].toLowerCase() as any };
+      }
+      const startMatch = altText.match(/^:(left|right|inline|center)(.*)$/i);
+      if (startMatch) {
+        return { alt: startMatch[2].trim(), position: startMatch[1].toLowerCase() as any };
+      }
+      return { alt: altText, position: 'inline' }; // default for inline context
+    };
+
+    const getImageClasses = (position: string): string => {
+      const base = "max-w-full h-auto rounded border border-gray-700 bg-white";
+      switch (position) {
+        case 'left':
+          return `${base} float-left mr-4 mb-2 max-w-xs`;
+        case 'right':
+          return `${base} float-right ml-4 mb-2 max-w-xs`;
+        case 'inline':
+          return `${base} inline-block my-1 max-h-24 w-auto`;
+        default:
+          return `${base} block my-2`;
+      }
+    };
+
     while (remaining.length > 0) {
       // Check for image ![alt](url)
       const imageMatch = remaining.match(/^!\[([^\]]*)\]\(([^)]+)\)/);
       if (imageMatch) {
-        const [fullMatch, alt, url] = imageMatch;
+        const [fullMatch, rawAlt, url] = imageMatch;
+        const { alt, position } = parseImageAlt(rawAlt);
         tokens.push(
-          <span key={`${key}-${tokenKey++}`} className="inline-block my-2">
-            <img 
-              src={url} 
-              alt={alt} 
-              className="max-w-full h-auto rounded border border-gray-700"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                target.parentElement!.innerHTML = `<span class="text-red-400 text-sm">[Image: ${alt || url}]</span>`;
-              }}
-            />
-            {alt && <span className="block text-sm text-gray-500 mt-1 italic">{alt}</span>}
-          </span>
+          <img 
+            key={`${key}-${tokenKey++}`}
+            src={url} 
+            alt={alt} 
+            className={getImageClasses(position)}
+          />
         );
         remaining = remaining.slice(fullMatch.length);
+        continue;
+      }
+
+      // Check for link [text](url) - must come after image check
+      const linkMatch = remaining.match(/^\[([^\]]+)\]\(([^)]+)\)/);
+      if (linkMatch) {
+        const [fullMatch, linkText, url] = linkMatch;
+        // Check if it's an anchor link (starts with #)
+        const isAnchor = url.startsWith('#');
+        tokens.push(
+          <a 
+            key={`${key}-${tokenKey++}`}
+            href={url}
+            className="text-amber-400 hover:text-amber-300 underline"
+            {...(isAnchor ? {} : { target: "_blank", rel: "noopener noreferrer" })}
+          >
+            {linkText}
+          </a>
+        );
+        remaining = remaining.slice(fullMatch.length);
+        continue;
+      }
+
+      // Check for <br/> or <br> line breaks
+      const brMatch = remaining.match(/^<br\s*\/?>/i);
+      if (brMatch) {
+        tokens.push(<br key={`${key}-${tokenKey++}`} />);
+        remaining = remaining.slice(brMatch[0].length);
         continue;
       }
 
@@ -86,7 +140,7 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
       }
 
       // Find next special character or end
-      const nextSpecial = remaining.search(/[\*\$_!]/);
+      const nextSpecial = remaining.search(/[\*\$_!<\[]/);
       if (nextSpecial === -1) {
         tokens.push(remaining);
         break;
@@ -139,13 +193,13 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
 
     return (
       <div key={key} className="my-6 overflow-x-auto">
-        <table className="w-full border-collapse font-mono text-sm">
+        <table className="w-full border-collapse font-mono text-sm bg-black border border-white">
           <thead>
-            <tr className="bg-gray-800/80 border-b-2 border-amber-500/50">
+            <tr className="border-b border-white">
               {table.headers.map((header, i) => (
                 <th 
                   key={i} 
-                  className="px-4 py-3 text-left text-amber-400 font-bold uppercase tracking-wider text-xs"
+                  className="px-4 py-3 text-left text-gray-300"
                 >
                   {renderInlineFormatting(header, key * 1000 + i)}
                 </th>
@@ -156,16 +210,12 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
             {table.rows.map((row, rowIdx) => (
               <tr 
                 key={rowIdx} 
-                className={`
-                  border-b border-gray-700/50 
-                  ${rowIdx % 2 === 0 ? 'bg-gray-900/30' : 'bg-gray-800/20'}
-                  hover:bg-amber-500/10 transition-colors
-                `}
+                className="border-b border-white"
               >
                 {row.map((cell, cellIdx) => (
                   <td 
                     key={cellIdx} 
-                    className="px-4 py-3 text-gray-300"
+                    className="px-4 py-3 text-gray-300 align-top"
                   >
                     {renderInlineFormatting(cell, key * 10000 + rowIdx * 100 + cellIdx)}
                   </td>
@@ -178,14 +228,52 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
     );
   };
 
+  // Helper to parse image alt text for position modifier (standalone context, using : to avoid conflict with table |)
+  const parseStandaloneImageAlt = (altText: string): { alt: string; position: 'left' | 'right' | 'center' } => {
+    // Check for :position at the end or :position at the start
+    const endMatch = altText.match(/^(.*):(left|right|center)$/i);
+    if (endMatch) {
+      return { alt: endMatch[1].trim(), position: endMatch[2].toLowerCase() as any };
+    }
+    const startMatch = altText.match(/^:(left|right|center)(.*)$/i);
+    if (startMatch) {
+      return { alt: startMatch[2].trim(), position: startMatch[1].toLowerCase() as any };
+    }
+    return { alt: altText, position: 'center' }; // default for standalone
+  };
+
   // Render a standalone image block
-  const renderImageBlock = (alt: string, url: string, key: number): React.ReactNode => {
+  const renderImageBlock = (rawAlt: string, url: string, key: number): React.ReactNode => {
+    const { alt, position } = parseStandaloneImageAlt(rawAlt);
+    
+    const getContainerClasses = (): string => {
+      switch (position) {
+        case 'left':
+          return "float-left mr-6 mb-4 max-w-sm";
+        case 'right':
+          return "float-right ml-6 mb-4 max-w-sm";
+        default:
+          return "my-6 flex flex-col items-center";
+      }
+    };
+
+    const getImageClasses = (): string => {
+      const base = "h-auto rounded-lg border border-gray-700 shadow-lg bg-white";
+      switch (position) {
+        case 'left':
+        case 'right':
+          return `${base} max-w-full max-h-72`;
+        default:
+          return `${base} max-w-full max-h-96`;
+      }
+    };
+
     return (
-      <figure key={key} className="my-6 flex flex-col items-center">
+      <figure key={key} className={getContainerClasses()}>
         <img 
           src={url} 
           alt={alt} 
-          className="max-w-full max-h-96 h-auto rounded-lg border border-gray-700 shadow-lg"
+          className={getImageClasses()}
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.style.display = 'none';
@@ -282,13 +370,13 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
   };
 
   return (
-    <div className={`text-lg leading-relaxed text-gray-300 font-mono ${className}`}>
+    <div className={`text-lg leading-relaxed text-gray-300 font-mono clearfix ${className}`}>
       {parts.map((part, idx) => {
         // Block LaTeX (centered)
         if (part.startsWith('$$') && part.endsWith('$$')) {
           const latex = part.slice(2, -2).trim();
           return (
-            <div key={idx} className="my-4 text-center">
+            <div key={idx} className="my-4 text-center clear-both">
               <LatexRenderer expression={latex} block />
             </div>
           );
@@ -297,6 +385,7 @@ const FormattedText: React.FC<FormattedTextProps> = ({ text, className = '' }) =
         // Regular text - may contain tables, images, and paragraphs
         return <React.Fragment key={idx}>{renderTextBlock(part, idx)}</React.Fragment>;
       })}
+      <div className="clear-both" />
     </div>
   );
 };
